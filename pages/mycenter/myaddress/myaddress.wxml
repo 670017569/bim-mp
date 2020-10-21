@@ -1,0 +1,25 @@
+<!--pages/myaddress/myaddress.wxml-->
+<view class='myaddress'>
+  <view wx:for="{{address.list}}" wx:key="key" wx:for-item="item" data-index="{{index}}" bindtap='changeAddress'>
+    <block wx:if="{{item.isDefault == true}}">
+      <view class='content'>
+        <view class='name'>{{item.nickName}}</view>
+        <view class='default'>默认地址</view>
+        <view class='phonenumber'>{{item.phone}}</view>
+        <view class='address'>{{item.regions.province}}{{item.regions.city}}{{item.regions.hsien}}{{item.address}}</view>
+      </view>
+    </block>
+  </view>
+  <view wx:for="{{address.list}}" wx:key="key" wx:for-item="item" data-index="{{index}}" bindtap='changeAddress'>
+    <block wx:if="{{item.isDefault == false}}">
+      <view class='content'>
+        <view class='name'>{{item.nickName}}</view>
+        <view class='phonenumber'>{{item.phone}}</view>
+        <view class='address'>{{item.regions.province}}{{item.regions.city}}{{item.regions.hsien}}{{item.address}}</view>
+      </view>
+    </block>
+  </view>
+  <view class="bottomButton {{isIphoneX ? 'iphonex_bottom':''}}">
+    <van-button type="primary" size="normal" color="#5495E6" icon="plus" custom-style="width:100%;height:100%;font-size:30rpx" bind:click="addAddress">添加新地址</van-button>
+  </view>
+</view>

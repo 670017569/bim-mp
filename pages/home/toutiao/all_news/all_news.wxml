@@ -1,0 +1,22 @@
+<view wx:for="{{news}}" wx:key="key" wx:for-item="item">
+  <navigator class='news' url="/pages/home/toutiao/news_detail/news_detail?url={{item.url}}">
+    <view class='news_info'>
+      <text class="newsTitle">{{item.title}}</text>
+      <text class="newsContent">{{item.subtitle}}</text>
+      <view class='news_other_info'>
+        <block wx:if="{{type == 'news'}}">
+          <text>Bim新闻</text>
+        </block>
+        <block wx:elif="{{type == 'software'}}">
+          <text>Bim软件</text>
+        </block>
+        <block wx:else>
+          <text>Bim课程</text>
+        </block>
+        <text>{{item.publishTime}}</text>
+      </view>
+    </view>
+    <view class='news_img'><van-image width="100%" height="100%" src="{{item.thumb}}" fit="contain" /></view>
+  </navigator>
+  <view class='news_fenge'></view>
+</view>

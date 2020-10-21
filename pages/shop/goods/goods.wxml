@@ -1,0 +1,89 @@
+<!--pages/detail/detail.wxml-->
+<import src="../../../wxParse/wxParse.wxml" />
+<view>
+
+  <!-- 顶部轮播图 -->
+  <swiper indicator-dots="true" circular="true" autoplay="true" style="height: 240px;text-align:center;">
+    <block wx:for="{{picList}}" wx:key="item">
+      <swiper-item>
+        <van-image width="100%" height="100%" src="{{item}}" fit="contain" />
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <!-- 内容 -->
+  <view class="main">
+
+    <view class="item-name">{{goodsInfo.gname}}</view>
+
+    <!-- <view class="item-price">价格: ￥{{goodsInfo.price}}</view> -->
+
+    <view class="item-credit">积分: {{goodsInfo.credit}}</view>
+
+    <!-- <van-cell
+            title="评论"
+            value="{{goodsInfo.cms}}"
+            is-link
+            link-type="navigateTo"
+            url="/pages/shop/comment/comment?goodsId={{goodsInfo.goodsId}}"/> -->
+    
+    <template is="wxParse" data="{{wxParseData:article.nodes}}"></template>
+    <!-- <rich-text nodes='{{nodes}}'></rich-text> -->
+
+  </view>
+
+  <!-- 底部商品导航 -->
+  <van-goods-action>
+    <van-goods-action-icon
+            icon="chat-o"
+            text="客服"
+            bind:click="onClickIcon1"/>
+    <van-goods-action-icon
+            icon="cart-o"
+            text="购物车"
+            bind:click="onClickIcon2"
+            info="{{num}}"
+            url="../cart/cart" />
+    <van-goods-action-button
+            text="加入购物车"
+            type="warning"
+            color="linear-gradient(to right, #66eeff, #66ccff)"
+            linear-gradient
+            bind:click="showCartPopup"/>
+    <van-goods-action-button
+            text="立即购买"
+            color="linear-gradient(to right, #66aaff, #6655ff)"
+            bind:click="showBuyPopup"/>
+  </van-goods-action>
+
+  <!-- 弹出层选择商品参数 -->
+  <van-popup
+    show="{{ show }}"
+    position="bottom"
+    custom-style="height: 60%;padding: 20rpx 50rpx 117rpx 50rpx;"
+    bind:close="onClose">
+
+    <view class="select">
+      <view class="paramGroup" wx:for="{{paramGroup}}" wx:for-item="item" wx:key="key" wx:for-index="Gindex">
+        <view>库存 {{nowStock}}</view>
+        <view class="title">{{item}}</view>
+        <view class="paramValue" 
+        wx:for="{{paramValue[Gindex].value}}" wx:for-item="item1" wx:key="key" wx:for-index="Vindex" 
+        style="background-color:{{paramValue[Gindex].state[Vindex]}}"
+        bindtap="paramValueClick" data-Gindex="{{Gindex}}" data-Vindex="{{Vindex}}">{{item1}}</view>
+      </view>
+    </view>
+
+    <view class="amount">
+      <view class="amount_title"><text>购买数量</text></view>
+      <view class="amount_value"><van-stepper value="{{ 1 }}" bind:change="onChange" min="1" max="99" integer="true" /></view>
+    </view>
+    <van-submit-bar
+      button-text="{{buyButtonText}}"
+      bind:submit="onSubmit"
+      disabled="{{disable}}"
+      loading="{{loading}}"
+    />
+  </van-popup>
+
+</view>

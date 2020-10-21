@@ -1,0 +1,8 @@
+<view class='software_main' wx:for="{{software}}" wx:key="key" bindtap="softwareDetail" data-tpid="{{item.tpid}}">
+  <view class='software_main_img'>
+    <view style="width:100%;height:100%"><van-image width="100%" height="100%" src="{{item.thumb}}" fit="cover" /></view>
+  </view>
+  <view class='software_main_content'>
+    <text class='software_name'>{{item.title}}</text>
+  </view>
+</view>

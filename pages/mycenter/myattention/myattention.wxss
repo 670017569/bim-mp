@@ -1,0 +1,48 @@
+/* pages/myattention/myattention.wxss */
+.myattention{
+  padding: 0 27.15rpx;
+  border-top: 1.81rpx solid #ddd;
+}
+.item{height: 90.51rpx;margin: 18.1rpx 0;}
+.portrait{
+  width: 88.69rpx;
+  height: 85.07rpx;
+  float: left;
+}
+.introduce{
+  float: left;
+  display: inline-block;
+  font-size: 28.96rpx;
+  padding-top: 9.05rpx;
+  margin-left: 18.1rpx;
+}
+.content{
+  color: #ccc;
+  width: 325.8rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.attention{
+  line-height: 90.5rpx;
+}
+.font20{
+  font-size: 36.2rpx;
+  float: right;
+  color: #ccc;
+}
+.attention image
+{
+  margin-top: 23.53rpx;
+  float: right;
+  width: 45.25rpx;
+  height: 45.25rpx;
+}
+.underline{
+  width: 80%;
+  height: 1.81rpx;
+  background: #ccc;
+  position: relative;
+  top: 99.55rpx;
+  margin-left: 15%;
+}

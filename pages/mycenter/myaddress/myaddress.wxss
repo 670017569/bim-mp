@@ -1,0 +1,37 @@
+/* pages/myaddress/myaddress.wxss */
+page{
+  background: #f5f5f5;
+  padding-bottom: 165rpx;
+}
+.content
+{
+  padding: 18.1rpx;
+  height: 120rpx;
+  font-size: 28.96rpx;
+  background: #fff;
+  margin: 9.05rpx 0;
+}
+.name
+{
+  display: inline-block;
+}
+.default
+{
+  display: inline-block;
+  color: #5495E6;
+  font-size: 25.34rpx;
+  border: 1.81rpx solid #5495E6;
+  padding: 0 9.05rpx;
+  margin-left: 18.1rpx;
+}
+.address
+{
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  margin-top: 9.05rpx;
+}
+.phonenumber
+{
+  float: right;
+}

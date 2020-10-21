@@ -1,0 +1,39 @@
+<!--pages/mycenter/myaddress/addAddress/addAddress.wxml-->
+<view class='changeAddress'>
+  <form bindsubmit="addAddr">
+    <view class='content'>
+      <view class='name'>收件人：</view>
+      <input type='text' maxlength='5'placeholder='请输入收件人姓名' name = 'nickName'></input>
+    </view>
+    <view class='content'>
+      <view class='name'>手机号码：</view>
+      <input type='text' maxlength='20' placeholder='请输入收件人手机号码' name='phone'></input>
+    </view>
+
+    <view class="content">
+      <picker class="placeholder" mode="multiSelector"  bindchange="bindRegionChange" bindcolumnchange="changeRegionColumn" value="{{ multiIndex }}" range="{{ regions }}">
+      <view class="picker">所在地区 :{{regions[0][multiIndex[0]]}}  ,  {{regions[1][multiIndex[1]]}}  ,  {{regions[2][multiIndex[2]]}}</view>
+      </picker>
+    </view>
+
+
+
+    
+
+
+
+
+
+    <view class='content'>
+      <view class='name'>详细地址：</view>
+      <input type='text' maxlength='20'placeholder='街道/楼牌号等' name = 'detailAddr'></input>
+    </view>
+    <view class='addresses'>
+      <i-panel>
+        <i-radio value="设为默认地址" checked="{{checked}}" bindchange="handleAddressChange"></i-radio>
+      </i-panel>
+    </view>
+    <button class='save' formType="submit">保存</button>
+  </form>
+</view>
+

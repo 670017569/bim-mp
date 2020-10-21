@@ -1,0 +1,41 @@
+
+
+<view class='mypublish'>
+  <view wx:for="{{dynamic.list}}" wx:key="key" wx:for-item="item" class='item'>
+    <view class="img" bindtap="person_index" data-userid="{{item.userInfo.userid}}">
+      <image src="{{item.userInfo.avatar}}" class='dyportrait'></image>
+    </view>
+    <view class='nickName'>{{item.userInfo.nickName}}
+      <view class="dynamicTime">{{item.publishTime}}</view>
+    </view>
+    <block wx:if="{{item.userInfo.isFollow == false && item.userInfo.userid != user.userid}}">
+      <button class="attention" bindtap="attentionClick" data-userid="{{item.userInfo.userid}}">
+        关注
+      </button>
+    </block>
+    <block wx:elif="{{item.userInfo.userid == user.userid}}"></block>
+    <block wx:else>
+      <button class="attention" bindtap="attentionClick" data-userid="{{item.userInfo.userid}}" disabled="disabled">
+        已关注
+      </button>
+    </block>
+    <view class='clear'></view>
+    <view class='content' bindtap='getDynamic' data-dyid="{{item.dyid}}" data-index="{{index}}">{{item.content}}</view>
+    <view class='content_img'>
+      <block wx:if="{{item.picList != null}}">
+        <view class="img_urls">
+          <view class="img_item" wx:for="{{item.picList}}" wx:key="key" wx:for-item="item1">
+            <image src="{{item1}}" class="image" mode='aspectFill' bindtap="preview" data-src="{{item1}}" data-list="{{item.picList}}"></image>
+          </view>
+        </view>
+      </block>
+    </view>
+    <view class="clear"></view>
+    <view class="goodAndComment">
+      <block wx:if="{{item.isLike == false}}"><button bindtap="likeClick" data-dyid="{{item.dyid}}" data-index="{{index}}"><text class="fa fa-thumbs-o-up"></text> {{item.likes}}</button></block>
+      <block wx:else><button bindtap="likeClick" data-dyid="{{item.dyid}}" data-index="{{index}}"><text class="fa fa-thumbs-up" data-index="{{index}}"></text> {{item.likes}}</button></block>
+      <button bindtap='getDynamic' data-dyid="{{item.dyid}}" data-index="{{index}}"><text class="fa fa-commenting-o"></text> {{item.cms}}</button>
+    </view>
+    <view class="clear"></view>
+  </view>
+</view>

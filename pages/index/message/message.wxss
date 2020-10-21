@@ -1,0 +1,29 @@
+.msg-item{
+  height: 140rpx;
+  display: flex;
+  direction: row;
+  padding-bottom: 20rpx;
+  border-bottom: 2rpx #eee solid;
+}
+
+.msg-item image{
+  display: inline-block;
+  margin: 20rpx;
+  height: 100rpx;
+  width: 100rpx;
+}
+.msg-title{
+  font-size: 50rpx;
+  display: flex;
+  direction: column;
+  width: 600rpx;
+}
+.msg-brief{
+   margin-top: 15rpx;
+   font-family:  'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   font-size: 33rpx;
+}
+.aite{
+  margin-top: 46rpx;
+  margin-left: 30rpx;
+}

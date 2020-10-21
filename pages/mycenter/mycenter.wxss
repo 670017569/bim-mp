@@ -1,0 +1,100 @@
+.amountBg{
+    height:250rpx;
+    background-color: #5495E6; 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 10px;
+}
+.img{
+    margin-left: 20rpx;
+}
+.account{
+    width: 70%;
+    color: #ffffff;
+    margin-left: 18.1rpx;
+}
+.nav{
+  width:253.4rpx;
+  height: 72.4rpx;
+  margin: 18.1rpx auto;
+  text-decoration: none;
+  font: bold 1.5em 'Trebuchet MS',Arial, Helvetica;
+  display: inline-block;
+  text-align: center;
+  
+  line-height: 72.4rpx;
+  color: #000;
+  border: 1.81rpx solid #9c9c9c;
+  border: 1.81rpx solid rgba(0, 0, 0, 0.3);
+  text-shadow: 0 1.81rpx 0 rgba(0,0,0,0.4);
+  box-shadow: 0 0 0.05em rgba(0,0,0,0.4);
+  -moz-box-shadow: 0 0 .05em rgba(0,0,0,0.4);
+  -webkit-box-shadow: 0 0 0.05em rgba(0,0,0,0.4);
+}
+.nav_font1{font-size: 27.15rpx;}
+.nav_font2{font-size: 21.72rpx;}
+.order{
+    width: 94%;
+    height: 126.7rpx;
+    display: flex;
+    flex-direction: row;
+    background-color: #ffffff;
+    border-radius: 9.05rpx;
+    text-align: center;
+    align-items: center;
+    top:162.9rpx;
+    margin-left: 3%;
+}
+.desc{
+    width: 33%;
+    font-size: 28rpx;
+}
+.clear{
+    padding-top: 126.7rpx;
+}
+.item{
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    height: 90.5rpx;
+    align-items: center;
+    margin-bottom: 5%;
+}
+.item:active{
+  background-color: #ddd
+}
+.icon{
+    width: 90.5rpx;
+    text-align: center;
+}
+.itemName{
+    width: 40%;
+    font-size:30rpx;
+}
+.line{
+    height: 18.1rpx;
+}
+.hr{
+    height: 1.81rpx;
+    background-color: #cccccc;
+    opacity: 0.2;
+}
+.remark{
+    font-weight: normal;
+    margin-top:9.05rpx;
+}
+.right{
+    width: 40%;
+    text-align: right;
+}
+.opr{
+    color: #5495E6;
+    font-size: 23.53rpx;
+    font-weight: bold;
+    margin-right: 18.1rpx;
+}
+.integral{ 
+    font-size: 30rpx;
+    padding-left: 9.05rpx;
+}

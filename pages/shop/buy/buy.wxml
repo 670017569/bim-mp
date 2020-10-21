@@ -1,0 +1,65 @@
+<!--pages/buy/buy.wxml-->
+<view class="main">
+  <i-cell><view class="title">购物结算</view></i-cell>
+  
+  <!-- 选择地址 -->
+  <!-- todo 连接暂时留空 -->
+  <navigator class="person" url="/pages/mycenter/myaddress/chooseAddress/chooseAddress">
+    <block wx:if="{{address != null && address != ''}}">
+      <i-cell class="person-info" is-link>
+        <view class="person-name-phone" ><text space="nbsp">{{address.nickName}}   {{address.phone}}</text></view>
+        <view class="person-address">{{address.city + address.address}}</view>
+      </i-cell>
+    </block>
+    <block wx:else>
+      <i-cell class="person-info" is-link>
+        添加新地址
+      </i-cell>
+    </block>
+  </navigator>
+  <view class="line"></view>
+
+  <!-- 商品信息 -->
+  <view wx:for="{{orderInfo}}" wx:key="key" class="goodsItem">
+    <view class="itemTop">
+      <van-card
+        num="{{item.buyNum}}"
+        price="{{ item.goods.credit }}"
+        currency="积分:"
+        desc="{{ item.param.paramGroup + ':' + item.param.paramValue }}"
+        title="{{ item.goods.gname }}"
+        thumb="{{ item.goods.thumb }}"
+        thumb-link="/pages/shop/goods/goods?gid={{item.goods.gid}}" 
+      />
+    </view>
+    <view class="itemFoot"><van-divider /></view>
+  </view>
+  
+
+  <!-- 结算信息 -->
+  <view class="cost-info">
+    <view>
+      <text>商品总价</text>
+      <text>{{credit}}积分</text>
+    </view>
+    <view>
+      <text>运费</text>
+      <text>0</text>
+    </view>
+  </view>
+  <view class="line"></view>
+
+  <view>
+    <view class="pay-panel">
+      <!-- <text>支付方式</text> -->
+      <text>你有{{user.credit}}积分</text>
+    </view>
+    <!-- <van-tag color="#5495E6" size="medium">{{credit}}积分</van-tag> -->
+    <!-- <van-tag color="#969799" size="medium">￥{{price}}</van-tag> -->
+  </view>
+
+  <view class="bottom">
+    <view>{{credit}}积分</view>
+    <i-button inline type="primary" shape="circle" bindtap="pay">提交订单</i-button>
+  </view>
+</view>

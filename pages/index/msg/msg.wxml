@@ -1,0 +1,37 @@
+<!--pages/index/msg/msg.wxml-->
+<view class="msg-item">
+  <image class="header" src="/images/free.png"></image>
+  <view class="msg-left">asdsadsadasdsa</view>
+</view>
+
+<view class="msg-item right">
+  <image class="header" src="/images/free.png"></image>
+  <view class="msg-right">adsdasdassadsad</view>
+</view>
+
+
+<view class="msg-item">
+  <image class="header" src="/images/free.png"></image>
+  <view class="msg-left">asdsadsadasdsa</view>
+</view>
+
+<view class="msg-item right">
+  <image class="header" src="/images/free.png"></image>
+  <view class="msg-right">adsdasdassadsad</view>
+</view>
+
+<view class="msg-item right">
+  <image class="header" src="/images/free.png"></image>
+  <view class="msg-right">adsdasdassadsad</view>
+</view>
+
+<view class="input">
+  <view class="input-text">
+    <input type="text" auto-height> </input>
+  </view>
+  <button class="input-send">发送</button>
+</view>
+
+     
+
+

@@ -1,0 +1,9 @@
+<!-- <video id="myVideo" src="{{url}}" show-progress='{{false}}' controls='{{true}}'
+preload="auto" x-webkit-airplay="true" x5-playsinline="true" webkit-playsinline="true" playsinline="true"></video> -->
+
+
+
+<!-- <txv-video vid="i09777urw2f" playerid="txv1" id="myVideo" show-progress='{{false}}' controls='{{true}}'
+preload="auto" x-webkit-airplay="true" x5-playsinline="true" webkit-playsinline="true" playsinline="true"></txv-video> -->
+
+<video src="{{url}}" id="myVideo"></video>

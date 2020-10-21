@@ -1,0 +1,18 @@
+<view class="com_list" wx:for="{{likes.list}}" wx:for-item="item" wx:key="key">
+  <view class="comment">
+    <navigator url="/pages/mycenter/person_index/person_index?userid={{item.userid}}"><image class="userAvatar" src="{{item.userInfo.avatar}}"></image></navigator>
+    <view class="comRight">
+      <view class="comRight_nickName">{{item.userInfo.nickName}}<view class="comInfo">{{item.publishTime}}       </view></view>
+      <view class="likeTime" >{{item.likeTime}}</view>
+    </view>
+  </view>
+  <view class="middle">
+    <image src="/images/index/thumbUp.jpg"></image>
+    <text>赞了我</text>
+  </view>
+  <view class="content" bindtap='getDynamic' data-dyid="{{item.toid}}">
+    <view class="dyNickName">@{{user.nickName}}</view>
+    <view class="dyContent">{{item.description}}</view>
+  </view>
+  <view class="fenge"></view>
+</view>

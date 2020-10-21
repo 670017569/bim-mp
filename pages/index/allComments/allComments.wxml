@@ -1,0 +1,14 @@
+<view class="com_list" wx:for="{{comment.list}}" wx:for-item="item" wx:key="key">
+  <view class="comment">
+    <navigator url="/pages/mycenter/person_index/person_index?userid={{item.userid}}"><image class="userAvatar" src="{{item.userInfo.avatar}}"></image></navigator>
+    <view class="comRight">
+      <view class="comRight_nickName">{{item.userInfo.nickName}}<view class="comInfo">{{item.publishTime}}       </view></view>
+      <view class="comRight_content" >{{item.content}}</view>
+    </view>
+  </view>
+  <view class="content" bindtap='getDynamic' data-toid="{{item.toid}}" data-type="{{item.type}}">
+    <view class="dyNickName">@{{item.replyto}}</view>
+    <view class="dyContent">{{item.description}}</view>
+  </view>
+  <view class="fenge"></view>
+</view>

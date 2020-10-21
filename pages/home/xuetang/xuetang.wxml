@@ -1,0 +1,65 @@
+<view class="pages">
+
+
+  <!-- 案例 -->
+  <view class="xuetang_container" style='height:30%'>
+    <view class='container_top'>
+      <text class='xuetang_hot'>热门案例</text>
+      <navigator class='xuetang_more' url='/pages/home/xuetang/morecases/morecases'>更多案例>>></navigator>
+    </view>
+    <navigator url="/pages/home/toutiao/news_detail/news_detail?url={{sample.url}}" class='cases_main'>
+      <view style="width:100%;height:100%"><van-image width="100%" height="100%" src="{{sample.thumb}}" fit="contain" /></view>
+    </navigator>
+    <view class='cases_foot'>
+      <text class='cases_foot_text1'>{{sample.title}}</text>
+      <text class='cases_foot_text2'>{{sample.subtitle}}</text>
+    </view>
+  </view>
+  
+  <!-- 案例 -->
+
+  <!-- 软件 -->
+  <view class="xuetang_container">
+    <view class='container_top' >
+      <text class='xuetang_hot'>热门软件</text>
+      <navigator class='xuetang_more' url='/pages/home/toutiao/all_news/all_news?type=software'>更多软件>>></navigator>
+    </view>
+    <view class='software_main' wx:for="{{software}}" wx:key="key" bindtap="softwareDetail" data-url="{{item.url}}">
+      <view class='software_main_img'>
+        <view style="width:100%;height:100%"><van-image width="100%" height="100%" src="{{item.thumb}}" fit="cover" /></view>
+      </view>
+      <view class='software_main_content'>
+        <text class='software_name'>{{item.title}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 软件 -->
+
+  <!-- 课程 -->
+  <view class="xuetang_container" style='height:44%'>
+    <view class='container_top'>
+      <text class='xuetang_hot'>热门课程</text>
+      <navigator class='xuetang_more' url='/pages/home/xuetang/moreCourse/moreCourse'>更多课程>>></navigator>
+    </view>
+    <view wx:for="{{course}}" wx:key="key" wx:for-item="item">
+      <view class='news' data-url1="{{item.url}}" bindtap="sendUrl1">
+        <view class='news_info'>
+          <text class="newsTitle">{{item.title}}</text>
+          <text class="newsContent">{{item.subtitle}}</text>
+          <view class='news_other_info'>
+            <text>Bim课程</text>
+            <text>{{item.publishTime}}</text>
+          </view>
+        </view>
+        <view class='news_img'><van-image width="100%" height="100%" src="{{item.thumb}}" fit="contain" /></view>
+      </view>
+      <view class='news_fenge'></view>
+    </view>
+   
+  </view>
+  <!-- 课程 -->
+
+  
+
+</view>

@@ -1,0 +1,65 @@
+/* pages/myorder/myorder.wxss */
+.myorder{
+  padding: 36.2rpx 18.1rpx;
+}
+.o1{
+  font-size: 54.3rpx;
+}
+.content{
+  margin: 36.2rpx 18.1rpx;
+}
+.item
+{
+  box-shadow:3.62rpx 3.62rpx 3.62rpx #eee,3.62rpx -3.62rpx 3.62rpx #eee,-3.62rpx 3.62rpx 3.62rpx #eee,-3.62rpx -3.62rpx 3.62rpx #eee;
+  padding: 36.2rpx;
+  height: 340rpx;
+}
+.item image
+{
+  width: 181rpx;
+  height: 181rpx;
+  float: left;
+  margin-right: 18.1rpx;
+}
+.time{
+  font-size: 25.34rpx;
+  color: #a0a0a0;
+}
+.title{
+  font-size: 28.96rpx;
+  display: inline-block;
+  width: 307.7rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.finish{
+  color: #5495E6;
+  font-size: 28.96rpx;
+  float: right;
+}
+.price{
+  font-size: 21.72rpx;
+  color: #a0a0a0;
+  position: relative;
+  top: 90.5rpx;
+  left: 18.1rpx;
+}
+.clear{clear: both;}
+.amount
+{
+  float: right;
+  font-size: 25.34rpx;
+  color: #a0a0a0;
+}
+.comment{
+  color: #5495E6;
+  float: right;
+  width: 181rpx;
+  height: 54.3rpx;
+  line-height: 54.3rpx;
+  text-align: center;
+  font-size: 25.34rpx;
+  border: 1.81rpx solid #5495E6;
+  border-radius: 27.15rpx;
+}

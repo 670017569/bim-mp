@@ -1,0 +1,56 @@
+<!--pages/comment/comment.wxml-->
+<view class="comment-main">
+  <view class="comment-all"><text>全部评价</text></view>
+  <view class="comment">
+    <view class="comment-row">
+      <image src="/images/classify/book1.jpg" class="comment-header"></image>
+      <view class="user-name"><text>hello</text></view>
+      <view class="user-focus"><text>关注</text></view>
+    </view>
+    <view class="comment-text">
+      <text>泰摩是国内做咖啡机比较好的公司了,他们的豆子也经常买,西达摩依然是好评,能让人回购的佳品...</text>
+    </view>
+    <view class="comment-img">
+      <image src="/images/classify/book1.jpg"></image>
+      <image src="/images/classify/book2.jpg"></image>
+      <image src="/images/classify/book3.jpg"></image>
+    </view>
+    <view class="publish-time"><text>5-30 17:32</text></view>
+    <view class="line"></view>
+  </view>
+  <view class="comment">
+    <view class="comment-row">
+      <image src="/images/classify/book1.jpg" class="comment-header"></image>
+      <view class="user-name"><text>hello</text></view>
+      <view class="user-focus"><text>关注</text></view>
+    </view>
+    <view class="comment-text">
+      <text>泰摩是国内做咖啡机比较好的公司了,他们的豆子也经常买,西达摩依然是好评,能让人回购的佳品...</text>
+    </view>
+    <view class="comment-img">
+      <image src="/images/classify/book1.jpg"></image>
+      <image src="/images/classify/book2.jpg"></image>
+      <image src="/images/classify/book3.jpg"></image>
+    </view>
+    <view class="publish-time"><text>5-30 17:32</text></view>
+    <view class="line"></view>
+  </view>
+  <view class="comment">
+    <view class="comment-row">
+      <image src="/images/classify/book1.jpg" class="comment-header"></image>
+      <view class="user-name"><text>hello</text></view>
+      <view class="user-focus"><text>关注</text></view>
+    </view>
+    <view class="comment-text">
+      <text>泰摩是国内做咖啡机比较好的公司了,他们的豆子也经常买,西达摩依然是好评,能让人回购的佳品...</text>
+    </view>
+    <view class="comment-img">
+      <image src="/images/classify/book1.jpg"></image>
+      <image src="/images/classify/book2.jpg"></image>
+      <image src="/images/classify/book3.jpg"></image>
+    </view>
+    <view class="publish-time"><text>5-30 17:32</text></view>
+    <view class="line"></view>
+  </view>
+</view>
+

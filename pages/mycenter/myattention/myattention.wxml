@@ -1,0 +1,22 @@
+<!--pages/myattention/myattention.wxml-->
+<view class='myattention'>
+  <view class='item' wx:for="{{attention.list}}" wx:key="key" wx:for-item="item">
+    <image class='portrait' src='{{item.userInfo.avatar}}' bindtap="person_index" data-userid="{{item.userInfo.userid}}"></image>
+    <view class="introduce">
+      <view class='nickName'>{{item.userInfo.nickName}}</view>
+      <view class="content">{{item.userInfo.introduction}}</view>
+    </view>
+    <view class='attention' bindtap="attentionClick" data-index="{{index}}">
+      <block wx:if="{{userid != touserid}}">
+        <view></view>
+      </block>
+      <block wx:elif="{{item.userInfo.isFans == true && item.foid != 0}}">
+        <view class='font20'><text class='fa fa-exchange'></text>互相关注</view>
+      </block>
+      <block wx:else>
+        <view class='font20'><text class='fa fa-check'></text>已关注</view>
+      </block>
+    </view>
+    <view class='underline'></view>
+  </view>
+</view>

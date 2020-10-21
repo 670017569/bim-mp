@@ -1,0 +1,20 @@
+<!--pages/mycenter/mytopic/mytopic.wxml-->
+<view class='mypublish'>
+  <view wx:for="{{topic.list}}" wx:key="key" wx:for-item="item" class='item'>
+    <view class="img">
+      <image src="{{user.avatar}}" class='portrait'></image>
+    </view>
+    <view class='nickName'  bindtap='person_index' data-userid="{{user.userid}}">{{user.nickName}}
+      <view class="dynamicTime">{{item.publishTime}}</view>
+    </view>
+    <button class="ellipsis" bindtap="deleteTop" data-tpid="{{item.tpid}}" data-index="{{index}}">
+      <text class="fa fa-trash-o"></text>
+    </button>
+    <view class='clear'></view>
+    <view class='title' bindtap='getTopic' data-tpid="{{item.tpid}}">{{item.title}}</view>
+    <view class="bottomText" bindtap='getTopic' data-tpid="{{item.tpid}}">
+      <text class="topicCms"><text class="fa fa-commenting-o"></text><text style="font-size:25rpx"> {{item.cms}}</text></text>
+      <text class="topicClick"><text class="fa fa-eye"></text><text style="font-size:25rpx"> {{item.clicks}}</text></text>
+    </view>
+  </view>
+</view>

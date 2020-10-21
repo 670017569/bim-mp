@@ -1,0 +1,55 @@
+<!--pages/shop/shop.wxml-->
+<view>
+
+  <!--购物车图标-->
+  <!-- <navigator url="cart/cart"> -->
+    <!-- <image class="cart" src="/images/classify/shop.png"></image> -->
+    <van-goods-action>
+      <van-goods-action-icon 
+        icon="cart-o" 
+        text="购物车" 
+        info="{{num}}"
+        url="cart/cart"
+      />
+    </van-goods-action>
+  <!-- </navigator> -->
+
+  <!--购物车当前物品数, 无物品时不显示-->
+  <!-- <view class="con1" bindtap="aaad">
+    <text class="num">{{num}}</text>
+  </view> -->
+
+
+  <!-- 轮播图, 自动循环播放, 高度默认150 -->
+  <swiper indicator-dots circular autoplay style="text-align: center;">
+    <block wx:for="{{thumb}}" wx:key="item">
+      <swiper-item >
+        <navigator url="/pages/shop/goods/goods?gid={{item.gid}}" style="height:100%;width:100%">
+          <van-image width="100%" height="100%" src="{{item.img}}" fit="contain" />
+        </navigator>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <view class="shop">
+    <!-- shop-class可作为一组商品的分类, 包含一个子标题和若干商品 -->
+    <view class="shop-class">
+      <view class="shop-class-title">
+        <text>今日推荐</text>
+      </view>
+
+      <view class="shop-item" wx:for="{{goodsList.list}}" wx:key="name">
+        <navigator url="/pages/shop/goods/goods?gid={{item.gid}}" style="height: 100%;width: 100%;">
+          <view style="width:100%;height:80%"><van-image width="100%" height="100%" src="{{item.thumb}}" fit="contain" /></view>
+          <view style="height:20%">
+            <view class="shop-item-type"><text>{{item.gname}}</text></view>
+            <view class="shop-item-name"><text>积分: {{item.credit}}</text></view>
+            <!-- <view class="shop-item-cost"><text>积分: {{item.credit}}</text></view> -->
+          </view>
+        </navigator>
+      </view>
+
+    </view>
+  </view>
+
+</view>

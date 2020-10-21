@@ -1,0 +1,47 @@
+<!--pages/classify/cart/cart.wxml-->
+<block wx:if="{{num == 0}}">
+  <view style="color:#999;text-align:center;margin-top: 200rpx;">购物车竟然是空的！</view>
+</block>
+<block wx:else>
+  <view wx:for="{{cart.list}}" wx:key="key" class="goodsItem">
+    <view class="itemTop">
+      <view class="choose">
+        <van-checkbox value="{{ checked[index+1] }}" bind:change="changeState" data-index="{{index}}"></van-checkbox></view>
+      <view class="goodsCard">
+        <van-card
+          num="{{item.buyNum}}"
+          price="{{ item.goods.credit }}"
+          currency="积分:"
+          desc="{{ item.param.paramGroup + ':' + item.param.paramValue }}"
+          title="{{ item.goods.gname }}"
+          thumb="{{ item.goods.thumb }}"
+          thumb-link="/pages/shop/goods/goods?gid={{item.goods.gid}}" 
+        >
+          <view slot="footer">
+            <van-button size="small" bind:click="deleteCart" data-orderid="{{item.orderid}}">移除购物车</van-button>
+          </view>
+        </van-card>
+      </view>
+    </view>
+    <view class="itemFoot"><van-divider /></view>
+    
+  </view>
+</block>
+
+
+<van-submit-bar
+  price="{{ price*100 }}"
+  button-text="提交订单"
+  bind:submit="onSubmit"
+  disabled="{{disabled}}"
+  loading="{{loading}}"
+>
+  <view style="margin-left:25rpx;">
+    <van-checkbox value="{{ checked[0] }}" bind:change="changeState" data-index="all">全选</van-checkbox>
+  </view>
+</van-submit-bar>
+
+<!-- <view class="buy">
+  <view class="money">砖值: 300</view>
+  <view class="buynow">立即结算</view>
+</view> -->

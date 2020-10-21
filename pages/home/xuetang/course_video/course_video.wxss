@@ -1,0 +1,9 @@
+/* pages/home/xuetang/course_video/course_video.wxss */
+#myVideo{
+  height: 300px;
+}
+video{
+  width: 100%;
+  height: 100%;
+  display: block;
+}

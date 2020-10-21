@@ -1,0 +1,126 @@
+{
+  "usingComponents": {
+    "van-goods-action": "@vant/weapp/goods-action/index",
+    "van-goods-action-icon": "@vant/weapp/goods-action-icon/index",
+    "van-goods-action-button": "@vant/weapp/goods-action-button/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-submit-bar": "@vant/weapp/submit-bar/index",
+    "van-radio": "@vant/weapp/radio/index",
+    "van-radio-group": "@vant/weapp/radio-group/index",
+    "van-checkbox": "@vant/weapp/checkbox/index",
+    "van-checkbox-group": "@vant/weapp/checkbox-group/index",
+    "van-stepper": "@vant/weapp/stepper/index",
+    "van-tree-select": "@vant/weapp/tree-select/index",
+    "van-tag": "@vant/weapp/tag/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-card": "@vant/weapp/card/index",
+    "van-swipe-cell": "@vant/weapp/swipe-cell/index",
+    "van-divider": "@vant/weapp/divider/index",
+    "van-image": "@vant/weapp/image/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-collapse": "@vant/weapp/collapse/index",
+    "van-collapse-item": "@vant/weapp/collapse-item/index"
+  },
+  "pages": [
+    "pages/home/home",
+    "pages/login/login",
+    "pages/home/toutiao/toutiao",
+    "pages/homePage/moreActivity/moreActivity",
+    "pages/home/toutiao/news_detail/news_detail",
+    "pages/home/dongtai/dongtai",
+    "pages/home/huati/huati",
+    "pages/home/huati/huatiSearch/huatiSearch",
+    "pages/home/huati/searchInput/searchInput",
+    "pages/home/xuetang/xuetang",
+    "pages/home/xuetang/morecases/morecases",
+    "pages/home/xuetang/moreSoftwares/moreSoftwares",
+    "pages/homePage/huatiDetail/huatiDetail",
+    "pages/homePage/activityDetail/activityDetail",
+    "pages/homePage/dynamicDetail/dynamicDetail",
+    "pages/homePage/softwareDetail/softwareDetail",
+    "pages/shop/shop",
+    "pages/shop/buy/buy",
+    "pages/shop/cart/cart",
+    "pages/shop/goods/goods",
+    "pages/shop/comment/comment",
+    "pages/cart/cart",
+    "pages/index/index",
+    "pages/index/msg/msg",
+    "pages/mycenter/mycenter",
+    "pages/mycenter/credit/credit",
+    "pages/mycenter/mytopic/mytopic",
+    "pages/mycenter/mydynamic/mydynamic",
+    "pages/mycenter/myattention/myattention",
+    "pages/mycenter/myfans/myfans",
+    "pages/mycenter/myintegral/myintegral",
+    "pages/mycenter/myactivity/myactivity",
+    "pages/mycenter/myorder/myorder",
+    "pages/mycenter/myorder/details/details",
+    "pages/mycenter/myaddress/myaddress",
+    "pages/mycenter/myaddress/changeAddress/changeAddress",
+    "pages/mycenter/myaddress/addAddress/addAddress",
+    "pages/mycenter/myaddress/chooseAddress/chooseAddress",
+    "pages/mycenter/person_index/person_index",
+    "pages/home/toutiao/all_news/all_news",
+    "pages/index/allComments/allComments",
+    "pages/index/allLike/allLike",
+    "pages/home/xuetang/course_video/course_video",
+    "pages/home/xuetang/moreCourse/moreCourse",
+    "pages/index/message/message",
+    "pages/index/dongtai/dongtai"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Abio",
+    "navigationBarTextStyle": "black"
+  },
+  "plugins": {
+    "tencentvideo": {
+      "version": "1.3.14",
+      "provider": "wxa75efa648b60994b"
+    }
+  },
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#858585",
+    "selectedColor": "#5495E6",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "iconPath": "images/tabBar/index.png",
+        "selectedIconPath": "images/tabBar/index_click.png",
+        "text": "发现"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/tabBar/message.png",
+        "selectedIconPath": "images/tabBar/message_click.png",
+        "text": "消息"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "iconPath": "images/tabBar/cart.png",
+        "selectedIconPath": "images/tabBar/cart_click.png",
+        "text": "发布"
+      },
+      {
+        "pagePath": "pages/shop/shop",
+        "iconPath": "images/tabBar/goods.png",
+        "selectedIconPath": "images/tabBar/goods_click.png",
+        "text": "精品"
+      },
+      {
+        "pagePath": "pages/mycenter/mycenter",
+        "iconPath": "images/tabBar/my.png",
+        "selectedIconPath": "images/tabBar/my_click.png",
+        "text": "我的"
+      }
+    ]
+  }
+}

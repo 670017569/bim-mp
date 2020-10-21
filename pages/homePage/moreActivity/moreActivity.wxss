@@ -1,0 +1,36 @@
+/* pages/home/toutiao/more_activity/more_activity.wxss */
+page{
+  height: 100%;
+}
+.item{
+  margin-top: 70.2rpx;
+}
+.title{
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  font-size: 40rpx;
+}
+.time{
+  font-size: 25rpx;
+  color: #a0a0a0;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  padding: 29rpx 0;
+}
+.place{
+  font-size: 25rpx;
+  color: #a0a0a0;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.clear{clear: both;}
+.acImg{
+  width: 181rpx;
+  height: 181rpx;
+  overflow: hidden;
+  float: left;
+  margin: 0 10rpx;
+}

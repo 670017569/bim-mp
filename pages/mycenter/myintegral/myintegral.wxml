@@ -1,0 +1,30 @@
+<!--pages/mycenter/credit/credit.wxml-->
+<view class="credit">
+  <view class="top">
+    <view class="title">我的砖值</view>
+    <view class="nowCredit">{{user.brick}}Z</view>
+  </view>
+    <van-divider
+      contentPosition="center"
+      customStyle="color: #5495E6; border-color: #5495E6; font-size: 18px;"
+    >
+      砖值规则
+    </van-divider>
+  <view class="rule">
+    <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;砖值是专业能力技术水平的，用大写字母Z表示。
+通过完善个人信息、活跃程度、上传文章、解答问题、评价和参加线上线下活动还得砖值。</text>
+    <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;1、填写个人信息：
+姓名、性别、年龄、电话，专业每项10Z；
+学历：中专或职业高中得20Z、大专得30Z、本科得50Z、硕士研究生得100Z、博士得200Z；
+职称：初级30Z、中级80Z、副高150Z、正高300Z；
+相关领域专家每项100Z、软件模块每项100Z、作品每项200Z；
+获奖每项200Z。
+（app始发版暂时不需要上传证书）</text>
+    <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;2、在线活跃程度每累积5个小时计1Z；</text>
+    <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;3、每连续签到天数达到14天得1Z</text>
+    <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;4、上传推文得5Z，原创得10Z；</text>
+    <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;5、上传原创课程，每节课得20Z，成套课程得100-200Z；</text>
+    <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;6、进行线上或线下讲座每场次得20Z；</text>
+    <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;7、其他情况得5-100Z。</text>
+  </view>
+</view>

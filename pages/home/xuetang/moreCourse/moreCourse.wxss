@@ -1,0 +1,65 @@
+/* 课程 */
+.news{
+  margin-top: 15rpx;
+  margin-right: 20rpx;
+  margin-left: 20rpx;
+  display: flex;
+  width: 95%;
+  height: 220rpx;
+}
+.news_info{
+  display: inline-block;
+  flex: 1;
+  height: 95%;
+  width: 50%;
+  padding: 10rpx 20rpx 0 10rpx;
+  position: relative;
+}
+.newsTitle{
+  padding: 5rpx 0;
+  width: 95%;
+  margin-top: 5rpx;
+  font-size: 34rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  display: inline-block;
+}
+.newsContent{
+  font-size: 25rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.news_other_info{
+  margin-top: 10rpx;
+  position: absolute;
+  bottom: 0;
+}
+.news_other_info text{
+  display: inline-block;
+  margin: 10rpx 25rpx 0 0;
+  font-size: 25rpx;
+  color: #999898;
+}
+image{
+  height: 180rpx;
+  width: 270rpx;
+}
+.news_img{
+  height: 100%;
+  width: 35%;
+  display: inline-block;
+  margin-top: 15rpx;
+  margin-right: 20rpx;
+}
+.news_fenge{
+  border-bottom: 2rpx #dedede solid;
+  width: 95%;
+  margin-left: 20rpx;
+  margin-top: 5rpx;
+}
+
+/* 课程 */

@@ -1,0 +1,11 @@
+
+<tabs Tabs="{{Tabs}}" binditemChange="handleItemChange">
+
+  
+</tabs>
+<block wx:if="{{Tabs[0].isActive}}"><include src="dongtai/dongtai"/></block>
+<block wx:if="{{Tabs[1].isActive}}"><include src="message/message"/></block>
+
+
+
+

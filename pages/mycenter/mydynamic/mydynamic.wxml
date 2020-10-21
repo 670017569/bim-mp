@@ -1,0 +1,30 @@
+<!--pages/mycenter/mydynamic/mydynamic.wxml-->
+<view class='mypublish'>
+  <view wx:for="{{dynamic.list}}" wx:key="key" wx:for-item="item" class='item'>
+    <view class="img">
+      <image src="{{user.avatar}}" class='portrait'></image>
+    </view>
+    <view class='nickName'>{{user.nickName}}
+      <view class="dynamicTime">{{item.publishTime}}</view></view>
+    <button class="ellipsis" bindtap="deleteDyn" data-dyid="{{item.dyid}}" data-index="{{index}}">
+      <text class="fa fa-trash-o"></text>
+    </button>
+    <view class='clear'></view>
+    <view class='content' bindtap='getDynamic' data-dyid="{{item.dyid}}" data-index="{{index}}">{{item.content}}</view>
+    <view class='content_img'>
+      <block wx:if="{{item.picList != null}}">
+        <view class="img_urls">
+          <view class="img_item" wx:for="{{item.picList}}" wx:key="key" wx:for-item="item1">
+            <image src="{{item1}}" class="image" mode='aspectFill' bindtap="preview" data-src="{{item1}}" data-list="{{item.picList}}"></image>
+          </view>
+        </view>
+      </block>
+    </view>
+    <view class="clear"></view>
+    <!-- <view class="goodAndComment">
+      <button bindtap="likeClick" data-dyid="{{item.dyid}}"><text class="{{likeButton}}"></text></button>
+      <button bindtap='getDynamic' data-dyid="{{item.dyid}}" data-index="{{index}}"><text class="fa fa-commenting-o"></text></button>
+    </view> -->
+    <view class="clear"></view>
+  </view>
+</view>

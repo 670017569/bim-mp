@@ -1,0 +1,25 @@
+/* pages/mycenter/credit/credit.wxss */
+view{
+  width: 100%;
+}
+.top{
+  text-align: center;
+  margin: 20rpx 0;
+  height: 300rpx;
+  background: #5495E6;
+  color: #000;
+  padding: 50rpx 0;
+}
+.title{
+  font-size: 40rpx;
+}
+.nowCredit{
+  font-size: 45rpx;
+  padding: 20rpx 0;
+}
+.rule{
+  padding: 20rpx;
+}
+text{
+  display: block;
+}

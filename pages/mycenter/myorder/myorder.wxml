@@ -1,0 +1,19 @@
+<!--pages/myorder/myorder.wxml-->
+<view class='myorder'>
+  <view class='o1'>订单列表</view>
+  <view wx:for="{{order.list}}" wx:key="key" wx:item="item">
+    <view class='content' bindtap='details' data-index="{{index}}">
+      <view class='item'>
+        <view class='time'>{{item.buyTime}}</view>
+        <image src='{{item.goods.thumb}}'></image>
+        <view class='title'>{{item.goods.gname}}</view>
+        <view class='finish'>{{item.states}}</view>
+        <view class='price'><text class='fa fa-toggle-off'></text> {{item.credit}}积分</view>
+        <view class='clear'></view>
+        <view class='amount'>×{{item.buyNum}}</view>
+        <view class='clear'></view>
+        <!-- <button class='comment'>评价晒单</button> -->
+      </view>
+    </view>
+  </view>
+</view>

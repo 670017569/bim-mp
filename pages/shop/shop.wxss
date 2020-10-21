@@ -1,0 +1,56 @@
+/* pages/mall/mall.wxss */
+/* 两侧边距各40rpx, 中间间距40rpx, 单个商品宽度315rpx */
+.shop{
+  padding: 0 40rpx;
+}
+.shop-class-title{
+  margin-top: 60rpx;
+  font-size: 44rpx;
+}
+.shop-item{
+  margin-top: 40rpx;
+  background-color: white;
+  width: 315rpx;
+  height: 395rpx;
+  float: left;
+}
+.shop-item:nth-child(2n+1){
+  margin-left: 40rpx;
+}
+.shop-item-type{
+  font-size: 28rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.shop-item-name{
+  font-size: 34rpx;
+}
+.shop-item-cost{
+  color: gray;
+  margin-top: 20rpx;
+  font-size: 28rpx;
+}
+.con1
+{
+  width:30rpx;
+  height: 30rpx;
+  background: red;
+  border-radius: 15rpx;
+  font-size: 20rpx;
+  text-align: center;
+  line-height: 15px;
+  position: fixed;
+  bottom: 90rpx;
+  right: 60rpx;
+}
+.van-goods-action{
+  width: 91rpx;
+  right: 30rpx;
+  bottom: 30rpx;
+}
+
+
+

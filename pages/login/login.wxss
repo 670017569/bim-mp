@@ -1,0 +1,75 @@
+/* pages/login/login.wxss */ 
+.header 
+{ 
+  margin: 90rpx 0 90rpx 50rpx; 
+  border-bottom: 1px solid #ccc; 
+  text-align: center; 
+  width: 650rpx; 
+  height: 300rpx; 
+  line-height: 300rpx; 
+} 
+.header image 
+{ 
+  width: 90rpx; 
+  height: 120rpx; 
+} 
+.content 
+{ 
+  margin-left: 50rpx; 
+  margin-bottom: 90rpx; 
+} 
+.content text 
+{ 
+  display: block; 
+  color: #9d9d9d; 
+  margin-top: 40rpx; 
+} 
+.bottom { 
+  border-radius: 80rpx; 
+  margin: 70rpx 50rpx; 
+  font-size: 35rpx; 
+} 
+/* agreement.wxss */
+.book-info{
+    border-top: 1rpx solid #eeeeee;
+    padding-bottom: 50rpx;
+    text-align: center;
+}
+
+.cover{
+    margin: 70rpx auto 0 auto;
+    width: 235rpx;
+    height: 235rpx;
+    overflow: hidden;
+}
+
+.cover > image{
+    width: 235rpx;
+    height: 235rpx;
+}
+
+.title{
+    margin-top:50rpx; 
+}
+
+.author{
+    margin-top:10rpx; 
+}
+
+/*用户协议*/
+.user-agree{
+    color: #38cfba;
+}
+.info{
+    margin-top: 30rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    text-align: center;
+    font-size: 24rpx;
+    color: #666;
+}
+.h1{
+  font-size: 45rpx;
+  text-align: center;
+  margin-top: 20rpx;
+}

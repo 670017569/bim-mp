@@ -1,0 +1,97 @@
+/* pages/buy/buy.wxss */
+.line{
+  border: 1rpx #eee solid;
+}
+.main{
+  padding: 0 20rpx;
+  background-color: #fff
+}
+.title{
+  font-size: 55rpx;
+}
+.person{
+  display: flex;
+  direction: row;
+}
+.person-info{
+  width: 95%;
+}
+.person-name-phone{
+font-size: 35rpx;
+}
+.person-address{
+  font-size: 28rpx;
+  margin-top: 20rpx;
+  color: #aaa;
+}
+
+.goods-info{
+  padding: 40rpx;
+  display: flex;
+  direction: row;
+}
+.goods-info image{
+  height: 160rpx;
+  width: 160rpx;
+}
+.goods-desc{
+  margin-left: 20rpx;
+}
+.goods-desc view:nth-child(1){
+  font-size: 40rpx;
+}
+.goods-desc view:nth-child(2){
+  margin-top: 10rpx;
+  font-size: 30rpx;
+  color: #aaa;
+}
+.goods-desc view:nth-child(3){
+  margin-top: 10rpx;
+  font-size: 30rpx;
+  color: red;
+}
+.cost-info{
+  margin:30rpx;
+}
+.cost-info>view{
+  margin-top: 20rpx;
+}
+.cost-info>view>text{
+  color: #aaa;
+  font-size: 30rpx;
+}
+.cost-info>view>text:nth-child(2){
+  float:right;
+}
+.pay-panel{
+  margin-top: 40rpx;
+  margin: 0 30rpx;
+}
+.pay-panel>text{
+  font-size: 35rpx;
+}
+.pay-panel>text:nth-child(2){
+  color: #aaa;
+  float: right;
+}
+
+.i-tags{
+  margin: 20rpx 0 0 30rpx;
+}
+
+.bottom{
+  position: fixed;
+  width: 100%;
+  height: 150rpx;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+}
+.bottom>i-button{
+  margin-left: 300rpx;
+}
+.bottom>view{
+  margin: 40rpx 0;
+  font-size: 40rpx;
+  color: blue;
+}

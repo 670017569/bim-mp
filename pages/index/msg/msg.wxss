@@ -1,0 +1,50 @@
+/* pages/index/msg/msg.wxss */
+.msg-item{
+  display: flex;
+  direction: row;
+  
+  padding: 30rpx;
+}
+.right{
+  direction: rtl;
+}
+.header{
+  margin: 20rpx;
+  border-radius: 50%;
+  height: 100rpx;
+  width: 100rpx;
+}
+.msg-left{
+  padding: 15rpx;
+  border-radius: 10rpx;
+  background-color: #eee;
+}
+.msg-right{
+  padding: 15rpx;
+  border-radius: 10rpx;
+  background-color: greenyellow;
+}
+.input{
+  display: flex;
+  direction: row;
+  position:fixed;
+  bottom:0;
+  width: 95%;
+  margin-bottom: 20rpx;
+  margin-left: 30rpx;
+}
+.input-text{
+  background-color: #eee;
+  padding: 5rpx;
+  margin: auto;
+  width: 75%;
+  border-radius: 20rpx;
+}
+.input-send{
+  background-color: rgb(232, 235, 229);
+  font-size: 11px;
+  margin-left: 10rpx;
+  margin-right: 20rpx;
+  padding-bottom: 20rpx;
+  height: 65rpx;
+}

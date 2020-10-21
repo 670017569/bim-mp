@@ -1,0 +1,29 @@
+/* pages/index/msg/msg-search/msg-search.wxss */
+.msg-search{
+  height: 70rpx;
+  margin: 20rpx 33rpx;
+  border: 1rpx #eee solid;
+  border-radius:20rpx;
+  display: flex;
+  flex: 1;
+  width: 90%;
+}
+.people{
+  height: 75rpx;
+  margin: 20rpx 33rpx;
+  width: 90%;
+  border-bottom: 1rpx rgb(228, 228, 235) solid;
+  display: flex;
+  direction: column;
+  padding-bottom: 20rpx;
+}
+.user_pic{
+  width: 13%;
+  height: 100%;
+  border-radius: 50%;
+  overflow:hidden;
+}
+.user_nickName{
+  margin-left: 30rpx;
+  padding-top: 15rpx;
+}

@@ -1,0 +1,112 @@
+<!--pages/mycenter/person_index/person_index.wxml-->
+<view class="person_index">
+  <view class='content'>
+    <view class="tx_name">
+      <image src="{{user.avatar}}" bindtap="preview" class='tx'></image>
+    </view>
+    <view class='name'>{{user.nickName}}</view>
+    <block wx:if="{{user.introduction == '' || user.introduction == null}}">
+      <text class='introduce'>TA还没有个人简介哦</text>
+    </block>
+    <block wx:else>
+      <text class='introduce'>个人简介：{{user.introduction}}</text>
+    </block>
+    <view class='content2'>
+      <view class='praise'>获赞 {{user.likes}}</view>
+      <view class='attention'>关注 <text class='font5495E6' bindtap='MyAttention'>{{user.follows}}</text></view>
+      <view class='fans'>粉丝 <text class='font5495E6' bindtap='MyFans'>{{user.fans}}</text></view>
+    </view>
+  </view>
+  <view class='publish'>
+    <view class='title'>TA的动态 <text class='right' bindtap='MyDynamic'>{{user.dynamics}}条动态 <text class='fa fa-angle-right'> </text></text></view>
+    <block wx:if="{{dynamic.list.length == 0}}">
+      <text class="nullData">TA还没有个人动态哦</text>
+    </block>
+    <block wx:else>
+      <view class="publishContent">
+        <view wx:for="{{dynamic.list}}" wx:key="key" wx:for-item="item" class='item'>
+            <view class="img">
+              <image src="{{user.avatar}}" class='portrait'></image>
+            </view>
+            <view class='nickName'>{{user.nickName}}</view>
+            <view class='clear'></view>
+            <view class='dycontent' bindtap='getDynamic' data-dyid="{{item.dyid}}" data-index="{{index}}">{{item.content}}</view>
+            <view class='content_img'>
+              <block wx:if="{{item.picList != null}}">
+                <view class="img_urls">
+                  <view class="img_item" wx:for="{{item.picList}}" wx:key="key" wx:for-item="item1">
+                    <image src="{{item1}}" class="image" mode='aspectFill' bindtap="previewDyn" data-src="{{item1}}" data-list="{{item.picList}}"></image>
+                  </view>
+                </view>
+              </block>
+            </view>
+            <view class="dynamicFoot">
+              <view class="dynamicTime">{{item.publishTime}}</view>
+              <view class="dynamicLikes">赞:{{item.likes}}</view>
+              <view class="dynamicCms">评论:{{item.cms}}</view>
+            </view>
+          </view>
+      </view>
+    </block>
+  </view>
+  <view class='publish'>
+    <view class='title'>TA的话题 <text class='right' bindtap='MyTopic'>{{user.topics}}条话题 <text class='fa fa-angle-right'> </text></text></view>
+    <block wx:if="{{topic.list.length == 0}}">
+      <text class="nullData">TA还没有个人话题哦</text>
+    </block>
+    <block wx:else>
+      <view class="publishContent">
+        <view wx:for="{{topic.list}}" wx:key="key" wx:for-item="item" class='item'>
+          <view class="img">
+            <image src="{{user.avatar}}" class='portrait'></image>
+          </view>
+          <view class='nickName'  bindtap='person_index' data-userid="{{user.userid}}">{{user.nickName}}</view>
+          <view class='clear'></view>
+          <view class='tptitle' bindtap='getTopic' data-tpid="{{item.tpid}}">{{item.title}}</view>
+          <view class="bottomText" bindtap='getTopic' data-tpid="{{item.tpid}}"><text class="city">{{item.city}}</text><text class="tptime">{{item.publishTime}}</text></view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class='activity'>
+    <view class='title'>TA的活动 
+      <block wx:if="{{nowUser.userid != user.userid}}"></block>
+      <block wx:else>
+        <text class='right' bindtap='MyActivity'>查看全部 <text class='fa fa-angle-right'> </text></text>
+      </block>
+    </view>
+    <block wx:if="{{activity.list.length == 0}}">
+      <text class="nullData">TA还没有参加活动哦</text>
+    </block>
+    <block wx:else>
+      <view class='item' bindtap='activityDetail' wx:for="{{activity.list}}" wx:key="key" data-acid="{{item.acid}}">
+        <view class="acImg"><image src='{{item.activity.thumb}}' style="width:200rpx;"></image></view>
+        <view class="information">
+          <view class='actitle'>{{item.activity.title}}</view>
+          <view class='actime'><text class='fa fa-clock-o'></text> {{item.activity.startTime}}</view>
+          <view class='place'><text class='fa fa-map-marker'></text><text space='nbsp'>  {{item.activity.address}}</text></view>
+        </view>
+        <view class="clear"></view>
+      </view>
+    </block>
+  </view>
+  <block wx:if="{{nowUser.userid == user.userid}}"></block>
+  <block wx:elif="{{attentionState == 1}}">
+    <view class="bottomButton {{isIphoneX ? 'iphonex_bottom':''}}">
+      <van-button type="primary" size="normal" color="#5495E6" icon="success" custom-style="width:50%;height:100%;font-size:30rpx" bind:click="attentionClick">已关注</van-button>
+      <van-button type="primary" size="normal" color="#5495E6" custom-style="width:50%;height:100%;font-size:30rpx" bind:click="chatClick">私信</van-button>
+    </view>
+  </block>
+  <block wx:elif="{{attentionState == 2}}">
+    <view class="bottomButton {{isIphoneX ? 'iphonex_bottom':''}}">
+      <van-button type="primary" size="normal" color="#5495E6" icon="exchange" custom-style="width:50%;height:100%;font-size:30rpx" bind:click="attentionClick">互相关注</van-button>
+      <van-button type="primary" size="normal" color="#5495E6" custom-style="width:50%;height:100%;font-size:30rpx" bind:click="chatClick">私信</van-button>
+    </view>
+  </block>
+  <block wx:elif="{{attentionState == 3}}">
+    <view class="bottomButton {{isIphoneX ? 'iphonex_bottom':''}}">
+      <van-button type="primary" size="normal" color="#5495E6" icon="plus" custom-style="width:50%;height:100%;font-size:30rpx" bind:click="attentionClick">关注</van-button>
+      <van-button type="primary" size="normal" color="#5495E6" custom-style="width:50%;height:100%;font-size:30rpx" bind:click="chatClick">私信</van-button>
+    </view>
+  </block>
+</view>

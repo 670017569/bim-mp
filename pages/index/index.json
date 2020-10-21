@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "tabs": "../../../components/tabs_msg/tabs_msg"
+  },
+  "enablePullDownRefresh":true,
+  "disableScroll": false
+}

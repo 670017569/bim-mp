@@ -1,0 +1,72 @@
+/* pages/mycenter/myaddress/addAddressTest/addAddressTest.wxss *//* pages/mycenter/myaddress/addAddress/addAddress.wxss */
+.changeAddress
+{
+  padding: 0 18.1rpx;
+}
+.content
+{
+  margin: 18.1rpx;
+  border-bottom: 1.81rpx solid #eee;
+  height: 108.6rpx;
+  line-height: 108.6rpx;
+  font-size: 32.6rpx;
+}
+.name
+{
+  float: left;
+  height: 100%;
+}
+.content input{
+  display: inline-block;
+  margin-top: 27.15rpx;
+}
+.address
+{
+  font-size: 32.58rpx;
+}
+.addresses
+{
+  padding-left: 181rpx;
+  border-bottom: 1.81rpx solid #eee;
+}
+button{
+  width: 20%;
+  height: 72.4rpx;
+  background: #5495E6;
+  color: #ffffff;
+  font-size: 25.34rpx;
+  float: left;
+  margin-left: 144.8rpx;
+  margin-top: 36.2rpx;
+}
+.input {
+  padding-top: 300rpx;
+  width: 100%;
+}
+
+.input input {
+  width: 100%;
+  background-color: #fff;
+  border-bottom: 1px #d9d9d9 solid;
+  border-top: 1px #d9d9d9 solid;
+  padding: 20rpx 50rpx;
+}
+
+.section {
+  padding-top: 20rpx;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+}

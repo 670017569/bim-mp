@@ -1,0 +1,31 @@
+<!--pages/mycenter/credit/credit.wxml-->
+<view class="credit">
+  <view class="top">
+    <view class="title">我的积分</view>
+    <view class="nowCredit">{{user.credit}}</view>
+    <view class="isSign">
+      <block wx:if="{{user.signinToday == true}}">已连续签到{{user.signinTimes}}天,今日已签到</block>
+      <block wx:else>已连续签到{{user.signinTimes}}天,今日未签到</block>
+    </view>
+  </view>
+    <van-divider
+      contentPosition="center"
+      customStyle="color: #5495E6; border-color: #5495E6; font-size: 18px;"
+    >
+      积分规则
+    </van-divider>
+  <view class="rule">
+    <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;10积分对等1元。通过完善个人信息、日常签到、上传文章、解答问题、评价和参加线上线下活动得相应积分。
+积分使用：通过精品商城兑换礼物；好友之间可以发积分红包，在群里发积分红包；兑换正版学习试用软件、课程等。
+积分有效期：2年，积分自入账之日计算时间。</text>
+    <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;1、个人信息积分：姓名、性别、年龄、电话、学历、专业、职称、相关专家、熟悉软件模块、作品及获奖情况。以上每项50积分，填写完整得500积分。</text>
+    <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;2、每日签到积分：20积分，连续14天签到送Abio笔记本；连续49天签到送Abio水瓶；连续119天签到送Abio 中性帽子；连续259天签到送Abio T恤；连续518天签到送Abio背包；连续723天签到送Abio旅行箱。</text>
+连续签到每满一个月自动获得一次抽奖锦鲤积分红包（20-200积分）
+（笔记本标价：586积分；Abio水瓶标价：998积分；Abio 中性帽子标价：1598积分；Abio T恤标价：2698积分；Abio背包标价：5998积分；Abio旅行箱标价：9998积分）
+    <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;3、编辑上传一篇文章获得20 积分，原创得60积分；发圈动态得10积分，置顶的推文奖80积分。</text>
+    <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;4、发布新闻推文得80积分；日常活动，转发朋友圈得积分10积分；</text>
+    <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;5、进行评价得10-100积分；参加线上答疑得100-500积分；进行线上讲座得600-2000积分；进行线下讲座得150-3000积分。</text>
+    <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;6、上传原创课件视频得600-2000积分一节（每节10分钟），上传一套原创视频课程得3000-8000积分。</text>
+    <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;7、主持一场活动得500-10000积分。</text>
+  </view>
+</view>

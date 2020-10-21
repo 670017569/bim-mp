@@ -1,0 +1,89 @@
+/* pages/home/huati/huatiSearch.wxss */
+button::after{
+  border: none;
+}
+
+.search{
+  width: 80%;
+}
+.search_arr {
+  border: 2.34rpx solid #d0d0d0;
+  border-radius: 10rpx;
+  margin-left: 20rpx;
+}
+.search_arr input{
+  margin-left: 60rpx;
+  height: 60rpx;
+  border-radius: 11.7rpx;
+}
+.bc_text {
+  line-height: 68rpx;
+  height: 68rpx;
+  margin-top: 34rpx;
+}
+
+.sousuo {
+  margin-left: 15rpx;
+  width: 17%;
+  line-height: 260%;
+  text-align: center;
+  border: 2.34rpx solid #d0d0d0;
+  border-radius: 10rpx;
+  font-size: 24rpx;
+  height: 260%;
+}
+.page_row{
+  display: flex;
+  flex-direction: row
+}
+.searchcion {
+  margin: 10rpx 10rpx 10rpx 10rpx;
+  position: absolute;
+  left:25rpx;
+  z-index: 2;
+  width: 46.8rpx;
+  height: 46.8rpx;
+  text-align: center;
+}
+
+.hi_txt{
+  color: #747474;
+  font-size: 23.4rpx;
+  bottom: 23.4rpx;
+}
+.history{
+  text-align: left;
+  color: #7d7dff;
+  height: 117rpx;
+  line-height: 58.5rpx;
+  margin-left: 14rpx;
+  font-family: SimHei;
+}
+.hi{
+  margin-left: 23.4rpx;
+  height: 351rpx;
+}
+.biaoq{
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 32.76rpx;
+  margin-left: 10rpx;
+  color: #00bb00;
+  font-family: SimHei;
+}
+.biaoqian{
+  width: 187.2rpx;
+}
+.bq{
+  display: flex;
+  flex-wrap: wrap
+}
+.bq_txt{
+  color: #747474;
+  font-size: 23.4rpx;
+  bottom: 23.4rpx;
+}
+.bqList{
+  margin-left: 23.4rpx;
+  height: 351rpx;
+}

@@ -1,0 +1,16 @@
+<!--pages/index/message/message.wxml-->
+<view class="msg-item" bindtap='getAllComments'>
+    <image src="/images/index/comment.png"></image>
+  <view class="aite">
+    评论
+  </view>
+</view>
+
+<view class="msg-item" bindtap='getAllLike'>
+    <image src="/images/index/thumbs-up.png"></image>
+  <view class="aite">
+    赞
+  </view>
+</view>
+
+<van-dialog id="van-dialog" />

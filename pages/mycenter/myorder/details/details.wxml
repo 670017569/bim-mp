@@ -1,0 +1,80 @@
+<!--pages/details/details.wxml-->
+<view class='details'>
+  <view class='d1'>订单详情</view>
+  <view class='content1'>
+    <view class='name'>{{addr.nickName}}</view>
+    <view class='phonenumber'>{{addr.phone}}</view>
+    <view class='address'>{{addr.address}}</view>
+  </view>
+  <view class='content2'>
+    <view class='orderNumber'>
+      <text class='title'>订单号</text>
+      <text class='floatRignt'>{{order.orderid}}</text>
+    </view>
+    <view class='time'>
+      <text class='title'>下单时间</text>
+      <text class='floatRignt'>{{order.buyTime}}</text>
+    </view>
+  </view>
+  <view class='content3'>
+    <!-- <view class='line1'>订单一</view> -->
+    <view class='line2'>
+      <!-- <text>包裹1</text> -->
+      <text class='finish'>{{state[order.states-1]}}</text>
+    </view>
+    <view class='line3'>
+      <image src='{{order.goods.thumb}}'></image>
+      <view class='title'>{{order.goods.gname}}</view>
+      <view class='amount'>×{{order.buyNum}}</view>
+      <view class='price'><text class='fa fa-toggle-off'></text> {{order.goods.credit}}</view>
+      <view class='clear'></view>
+      <view class='button'>
+        <button bindtap="goodsComment">评价晒单</button>
+        <button>查看物流</button>
+      </view>
+    </view>
+  </view>
+  <view class='content2'>
+    <view class='orderNumber'>
+      <text class='title'>商品金额</text>
+      <text class='floatRignt'><text class='fa fa-toggle-off'></text> {{order.credit}}</text>
+    </view>
+    <view class='time'>
+      <text class='title'>运费金额</text>
+      <text class='floatRignt'><text class='fa fa-toggle-off'></text> 0</text>
+    </view>
+  </view>
+  <view class='content4'>
+    总计:
+    <text class='floatRignt fontColor'><text class='fa fa-toggle-off'></text> {{order.credit}}</text>
+  </view>
+  <!-- 藏在下面的评价界面 -->
+  <view class="modals modals-bottom-dialog" hidden="{{hideModal}}">
+    <view class="modals-cancel" bindtap="hideModal"></view>
+    <view class="bottom-dialog-body bottom-pos" animation="{{animationData}}">
+    <!--服务评价-->
+    <view class="service">
+      <!--图片-->
+      <view class='picture'>
+        <view class='left'>
+          晒图
+        </view>
+        <view class='right'>
+          <view class="parcel" wx:for="{{pics}}" wx:key="key">
+          <image src="{{pics[index]}}" class="According" data-index="{{index}}" mode="aspectFill" bindtap="previewImg"></image>
+          </view>
+          <image src='/images/addImage.png' class='add' bindtap='choose'></image>
+        </view>
+      </view>
+    </view>
+    <!--textarea-->
+    <view class="conts">
+        <textarea class="areas" placeholder='更多评价请写在这里（最多300字）' minlength="{{min}}" maxlength="{{max}}" bindinput="inputs"> 
+            <!-- <text class="currentWordNumber">{{currentWordNumber|0}}/{{max}}</text> -->
+        </textarea>
+    </view>
+    <!--提交评价-->
+    <button class='btn' bindtap='handleBtn'>提交评价</button>
+    </view>
+  </view>
+</view>

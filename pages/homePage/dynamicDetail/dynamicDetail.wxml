@@ -1,0 +1,99 @@
+<!--pages/homePage/dynamicDetail/dynamicDetail.wxml--> 
+<view class='dongtai_content'> 
+  <view class='dongtai_content_top'> 
+    <image class='dongtai_content_top_img' src='{{user.avatar}}' bindtap="person_index"></image> 
+    <view class='dongtai_content_top_info'> 
+      <text class='dongtai_content_top_userName' bindtap="person_index">{{user.nickName}}</text> 
+      <text class='dongtai_content_top_time'>{{dynamic.publishTime}}</text> 
+    </view> 
+    <block wx:if="{{user.isFollow == false && user.userid != nowUser.userid}}">
+      <button class="attention" bindtap="attentionClickTrue" data-userid="{{item.userInfo.userid}}">
+        关注
+      </button>
+    </block>
+    <block wx:elif="{{user.userid == nowUser.userid}}"></block>
+    <block wx:else>
+      <button class="attention" bindtap="attentionClickFalse" data-userid="{{item.userInfo.userid}}">
+        已关注
+      </button>
+    </block>
+  </view> 
+ 
+  <view class='writing'>{{dynamic.content}} 
+  </view> 
+   
+  <view class='content_img'> 
+    <block wx:if="{{dynamic.picList != null}}"> 
+      <view class="img_urls"> 
+        <view class="img_item" wx:for="{{dynamic.picList}}" wx:key="key" wx:for-item="item1"> 
+          <image src="{{item1}}" class="image" mode='aspectFill' bindtap="preview" data-src="{{item1}}" data-list="{{dynamic.picList}}"></image> 
+        </view> 
+      </view> 
+    </block> 
+  </view> 
+ 
+  <view style="margin-top:70rpx;"> 
+  <view class="pl_txtandimg" style="magin-top:20rpx;"> 
+    <text class="pl_img">| </text> 
+    <text class="pl_txt"> 评论</text> 
+  </view> 
+ 
+  <view class="com_list" wx:for="{{comment.list}}" wx:for-item="item" wx:key="key" wx:if="{{item.tocmid==null}}">
+    <navigator url="/pages/mycenter/person_index/person_index?userid={{item.userid}}"><image class="userAvatar" src="{{item.userInfo.avatar}}"></image></navigator>
+  <view class="comRight">
+    <view class="comRight_top">
+      <view class="comRight_nickName">{{item.userInfo.nickName}} <view class="comInfo">{{item.publishTime}}</view>   </view>
+      <block wx:if="{{item.userInfo.userid == userid}}">
+        <button  bindtap="deleteCom" data-cmid="{{item.cmid}}">
+          <text style="vertical-align:middle;display: table-cell;">删除</text>
+        </button>
+      </block>
+    </view> 
+    <view bindtap="sendData" data-cmid="{{item.cmid}}">
+      <van-cell title="{{item.content}}" bind:click="showPopup" style="padding:0;"/>
+    </view> 
+
+    <!-- 二级评论 -->
+    <view class="lowCom" wx:for="{{item.comments}}" wx:for-item="lowCom" wx:key="key" wx:if="{{secComment[0].tocmid!=item.cmid}}">
+      <view class="comRight_nickName">{{lowCom.userInfo.nickName}} : <text> {{lowCom.content}}</text>
+
+        <button  bindtap="deleteCom" data-cmid="{{lowCom.cmid}}" style="display:inline-block;width:80rpx;height:45rpx;float:right;magin-top10rpx;line-height: 2.1;" wx:if="{{lowCom.userid == userid}}">
+          <view style="font-size:23rpx;">删除</view> 
+        </button>
+      </view>
+    </view>
+    <view class="lowCom" wx:for="{{secComment.list}}" wx:for-item="lowCom" wx:key="key" wx:if="{{secComment!=null&&lowCom.tocmid==item.cmid}}">
+      <view class="comRight_nickName">{{lowCom.userInfo.nickName}} : <text>
+       {{lowCom.content}}</text>
+        <button  bindtap="deleteCom" data-cmid="{{lowCom.cmid}}" style="display:inline-block;width:80rpx;height:45rpx;float:right;magin-top10rpx; line-height: 2.1;" wx:if="{{lowCom.userid == userid}}">
+          <view style="font-size:23rpx;">删除</view> 
+        </button>      
+      </view>
+    </view>
+
+
+    <view class="moreCom" bindtap="getSecCom" data-cmid="{{item.cmid}}" wx:if="{{item.commentNum>3}}">查看更多评论</view>
+
+  </view> 
+</view>
+
+</view>
+
+<van-popup show="{{ show }}" bind:close="onClose" position="bottom" custom-style="height: 10%;">
+      <form style="display:inline-block;width:100%;height:100%" bindsubmit="publishCom">
+        <view class="pl_row">
+          <input placeholder='  发表你的看法' name = 'content' value="{{comInputValue}}"></input>
+          <button form-type="submit" style="font-size:25rpx;vertical-align:middle;display: table-cell;" bindtap="onClose">发送</button>
+        </view>
+      </form>  
+</van-popup>
+ 
+<view  bindtap="sendDatA" data-cmid="null">
+  <form style="display:inline-block;width:100%;height:100%" bindsubmit="publishCom">
+        <view class="pl_row">
+          <input placeholder='  发个友善的评论见证当下' name = 'content' value="{{comInputValue}}"></input>
+          <button form-type="submit" style="font-size:25rpx;">发送</button>
+        </view>
+  </form>
+</view> 
+</view> 

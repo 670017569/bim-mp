@@ -1,0 +1,25 @@
+<!--pages/index/msg/msg-search/msg-search.wxml-->
+<view>
+  <input placeholder='  搜索' class='msg-search'></input>
+</view>
+<view class='people'>
+  <image class='user_pic' src='/images/dongtai/索隆.jpg'></image>
+  <text class='user_nickName'>彭于晏qaq</text>
+</view>
+<view class='people'>
+  <image class='user_pic' src='/images/dongtai/罗宾.jpg'></image>
+  <text class='user_nickName'>吴彦祖qaq</text>
+</view>
+<view class='people'>
+  <image class='user_pic' src='/images/dongtai/索隆.jpg'></image>
+  <text class='user_nickName'>lbr</text>
+</view>
+<view class='people'>
+  <image class='user_pic' src='/images/dongtai/罗宾.jpg'></image>
+  <text class='user_nickName'>lbr</text>
+</view>
+<view class='people'>
+  <image class='user_pic' src='/images/dongtai/路飞.jpg'></image>
+  <text class='user_nickName'>lbr</text>
+</view>
+

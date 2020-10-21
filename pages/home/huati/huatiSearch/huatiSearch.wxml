@@ -1,0 +1,27 @@
+<!--pages/home/huati/huatiSearch.wxml-->
+<view class='page_row'>
+    <view class="search">
+      <view class="df search_arr">
+        <icon class="searchcion" size='20' type='search'></icon>
+        <input class="" placeholder="请输入关键字" bindinput="getHuati"/>
+      </view>
+    </view>
+    <button class='sousuo' bindtap="huatiClick">搜索</button>
+</view>
+<view class="hi">
+  <text class="hi_txt">历史搜索记录:</text>
+  <view class="historySearch">
+    <view class="historylist" wx:for="{{history}}" wx:key="list">
+      <text class="history" bindtap="keyClick" data-item="{{item.value}}">{{item.value}}</text>
+    </view>
+  </view>
+</view>
+<view class="bqList">
+  <text class="bq_txt">标签关键字:</text>
+  <view class="bq">
+    <view class="biaoqian" wx:for="{{biaoqian}}" wx:key="list">
+     <text class="biaoq" bindtap="keyClick" data-item="{{item.value}}">{{item.value}}</text>
+    </view>
+  </view>
+</view>
+

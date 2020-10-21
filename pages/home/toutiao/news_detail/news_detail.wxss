@@ -1,0 +1,138 @@
+/* pages/home/toutiao/news_detail/news_detail.wxss */
+.title{
+  font-size: 46.8rpx;
+  font-weight: 550;
+  padding: 23.4rpx;
+  word-break: break-all;
+}
+.fabiaoren{
+  display: flex;
+  flex-direction: row;
+  padding: 23.4rpx;
+}
+.fabiaoren_img{
+  height: 79.56rpx;
+  width: 79.56rpx;
+}
+.fabiaoren_name{
+  display: flex;
+  flex-direction: column;
+  height: 79.56rpx;
+}
+.name{
+  font-size: 30.42rpx;
+}
+.time{
+  font-size: 30.42rpx;
+}
+.guanzhu{
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 42.12rpx;
+  color: rgb(88, 103, 138);
+  margin-top: 10rpx;
+  margin-right: 10rpx;
+}
+.content{
+  padding: 23.4rpx;
+}
+.imgs{
+  margin-left: 23.4rpx;
+  margin-right: 23.4rpx;
+}
+.img{
+  width: 100%;
+}
+.pinglun{
+  padding: 23.4rpx;
+  margin-bottom: 117rpx;
+}
+.no_pl{
+  text-align: center;
+  color: rgb(88, 103, 138);
+}
+.pl_txtandimg{
+  display: flex;
+  flex-direction: row;
+}
+.pl_img{
+  font-weight: 500;
+  color: green;
+}
+.pl_txt{
+  font-size: 42.12rpx;
+  margin-left: 10rpx;
+}
+.no_ol{
+  font-size: 23.4rpx;
+}
+/* .pl_list{
+  font-size: 23.4rpx;
+} */
+.pl_no_1{
+  display: flex;
+  flex-direction: row;
+  margin-top: 23.4rpx;
+}
+.left_view{
+  width: 79.56rpx;
+}
+.pl1_img{
+  height: 79.56rpx;
+  width: 79.56rpx;
+}
+.right_view{
+  margin-left: 10rpx;
+}
+.pl1{
+  display: flex;
+  flex-direction: column;
+}
+.pl1_name{
+  font-size: 35.1rpx;
+  color: rgb(88, 103, 138);
+}
+.pl1_content{
+  font-size: 23.4rpx;
+}
+.pl1_timeandhuifu{
+  display: flex;
+  flex-direction: row;
+}
+.pl1_time{
+  font-size: 23.4rpx;
+}
+.pl1_huifu{
+  font-size: 23.4rpx;
+}
+.pl2{
+  background-color: #ffc1c1;
+  display: flex;
+  flex-direction: column;
+}
+.pl2_huifuandhuifued{
+  font-size: 23.4rpx;
+  display: flex;
+  flex-direction: row;
+}
+.huifu_p{
+  font-size: 23.4rpx;
+  color: rgb(88, 103, 138);
+}
+.pl2_huifu{
+  font-size: 23.4rpx;
+}
+.pl2_content{
+  font-size: 23.4rpx;
+  word-break: break-all;
+}
+.xuanfu{
+  position: fixed;
+  width: 100%;
+  right: 0;
+  bottom: 0rpx;
+  z-index: 9999;
+}
+.xuanfupl{
+  height: 117rpx;
+}
