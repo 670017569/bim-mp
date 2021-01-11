@@ -116,11 +116,11 @@ App({
     try {
       let token = await wx.getStorageSync('token');
       token = await that.getToken();
-      // if (!token) {
-      //   token = await that.getToken();
-      // }
+      if (!token) {
+        token = await that.getToken();
+      }
       let msg = await Request.request({
-        url: `/wx/me`
+        url: `/user/me`
       });
       console.log(msg);
       // 判断token是否有效，无效重新获取token
@@ -147,7 +147,7 @@ App({
     return new Promise(async (resolve, reject) => {
       try {
         let msg = await Request.request({
-          url: '/wx/oauth/token',
+          url: '/auth/oauth/token',
           method: 'post',
           data: {
             loginCode: this.loginCode.code,
@@ -155,12 +155,11 @@ App({
             signature: this.userInfo.signature
           }
         }, true);
-        //得到 access_token
-        console.log(msg.data);
         that.globalData.accesstoken = msg.data;
+        console.log(msg.data)
         await wx.setStorage({
-          data: msg.data,
-          key: 'token',
+          data: msg.data.data.access_token,
+          key: 'access_token',
         });
         resolve(msg.data);
       } catch (error) {
@@ -176,7 +175,7 @@ App({
   updateUserInfo: async function () {
     try {
       let msg = await Request.request({
-        url: `/wx/me`
+        url: `/user/me`
       });
       that.globalData.user = msg.data;
       console.log("更新用户信息成功!");

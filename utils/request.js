@@ -3,7 +3,8 @@ let app = getApp()
  * 服务端 URL, 末尾没有'/', 请求路径需要以'/' 开头
  * @type {string}
  */
-const BASE_URL = 'http://bbs.bmy8.xyz';
+// const BASE_URL = 'http://bbs.bmy8.xyz/wx';
+const BASE_URL='http://localhost:9001/wx';
 /**
  * POST/PUT默认请求头
  */
