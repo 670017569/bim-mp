@@ -1,0 +1,53 @@
+/* homeComponents/standard/standard.wxss */
+/* 标准 */
+.standard{
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(245, 245, 244);
+  padding: 8rpx 0;
+  height: 1500rpx;
+}
+.standard_province_container{
+  flex: 1.4;
+  height: 100%;
+  background-color:var(--cell-background-color,#fff);
+}
+.standard_content{
+  flex: 5;
+  height: 100%;
+}
+.standard_province{
+  width: 100%;
+  text-align: center;
+  height: 60rpx;
+  line-height: 57rpx;
+  border-bottom: 1rpx solid #eee;
+  margin-top: 10rpx;
+}
+.standard_province_hover{
+  width: 100%;
+  text-align: center;
+  height: 60rpx;
+  line-height: 57rpx;
+  border-bottom: 1rpx solid #eee;
+  margin-top: 10rpx;
+  color: #5494E6;
+}
+.standard_view{
+  margin-top: 2%;
+  margin-bottom: 2%;
+  margin-left: 2%;
+  margin-right: 5%;
+  background-color: #fff;
+  white-space: normal;
+}
+.standard_time{
+  margin-left: 65%;
+  margin-right: 4rpx;
+  margin-top: 5rpx;
+  margin-bottom: 12rpx;
+  font-size: x-small;
+  color: rgb(181, 181, 177);
+}
+
+/* 标准结束 */

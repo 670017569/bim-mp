@@ -10,7 +10,7 @@ Page({
   data: {
     currentPage: 0,
     news: {},
-    type:''
+    type: ''
   },
 
   /**
@@ -21,7 +21,7 @@ Page({
     let type = options.type;
     console.log(type)
     this.setData({
-      type:type
+      type: type
     })
     let pages = getCurrentPages();
     let prevPage = pages[pages.length - 2];
@@ -31,88 +31,53 @@ Page({
     that.loadInitData(type);
   },
   //加载初始数据
-  loadInitData: function (type) {
+  loadInitData: async function (type) {
     //目前为第一页
     var currentPage = 1;
-    var tips = "Loading";
     console.log("load page " + (currentPage));
-    wx.showLoading({
-      title: tips,
-    })
-    // 请封装自己的网络请求接口，这里作为示例就直接使用了wx.request.
-    Request.getRequest("/link?len=8&type=" + type +"&page=1", function (res) {
-      if (res.data.list.length == 0) {
+    // 请数据
+    try {
+      let msg = await Request.request({
+        url: `/bbs/link?len=8&type=${type}&page=1`
+      });
+      if (msg.data.list.length === 0) {
         wx.showToast({
           title: '暂无新闻',
+          icon: 'none'
         })
-      }
-      else {
-        //隐藏加载提示框
-        wx.hideLoading();
+      } else {
         that.setData({
-          news: res.data.list,
+          news: msg.data.list,
           currentPage: currentPage
         })
       }
-    })
+    } catch (error) {
+      console.log(error);
+    }
   },
   //加载下一页数据
-  loadMoreData: function (type) {
+  loadMoreData: async function (type) {
     var currentPage = that.data.currentPage; // 获取当前页码
     currentPage += 1; // 加载当前页面的下一页数据
-    var tips = "Loading";
-    console.log("load page " + (currentPage));
-    wx.showLoading({
-      title: tips,
-    })
-    // 请封装自己的网络请求接口，这里作为示例就直接使用了wx.request.
-    Request.getRequest("/link?len=8&type=" + type+"&page=" + currentPage, function (res) {
-      wx.hideLoading();
-      //拿到新获取到的list
-      var resData = res.data.list;
-      if (resData.length == 0) {
-        wx.showToast({
-          title: '下面没有了',
-        })
-      }
-      else {
-        //拿到当前的activityList
-        var newsList = that.data.news;
-        //加上新获取到的list
-        newsList = newsList.concat(resData);
-        that.setData({
-          news: newsList,
-          currentPage: currentPage
-        })
-      }
-    })
-  },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+    console.log("load page " + currentPage);
+    // 请求下一页数据
+    let msg = await Request.request({
+      url: `/bbs/link?len=8&type=${type}&page=${currentPage}`
+    });
+    //拿到新获取到的list
+    var data = msg.data.list;
+    if (data.length === 0) {
+      wx.showToast({
+        title: '已经到底了哦',
+        icon: 'none'
+      })
+    } else {
+      that.setData({
+        //拼接原数据和新获取的数据
+        news: [...that.data.news, ...data],
+        currentPage: currentPage
+      })
+    }
   },
 
   /**

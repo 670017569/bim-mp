@@ -12,9 +12,9 @@ Page({
     code: null,
     navbar: ['动态', '话题'],
     currentTab: 0,
-    inputValue:null,
-    topInputValue:null,
-    topInputTitle:null,
+    inputValue: null,
+    topInputValue: null,
+    topInputTitle: null,
 
     //富文本编辑器
 
@@ -65,11 +65,10 @@ Page({
   publishDyn(e) {
     var content = e.detail.value.content;
     var pics = this.data.pics;
-    if(!content)
-    {
+    if (!content) {
       wx.showToast({
         title: '请输入内容',
-        icon:'none'
+        icon: 'none'
       })
       return
     }
@@ -77,9 +76,9 @@ Page({
     for (var i = 0; i < pics.length; i++) {
       //压缩
       wx.compressImage({
-        src:pics[i],
-        quality:0,
-        success: function (res){
+        src: pics[i],
+        quality: 0,
+        success: function (res) {
           pics[i] = res.tempFilePath
         }
       })
@@ -102,16 +101,16 @@ Page({
       "publishTime": util.formatTime,
       "userid": userid
     };
-    Request.postRequest(path, data,function(){
+    Request.postRequest(path, data, function () {
       console.log(data)
       app.globalData.homeIndex = 1;
       wx.switchTab({
-        url: '/pages/home/home'
-      }),
-      getApp().updateUserInfo();
+          url: '/pages/home/home'
+        }),
+        getApp().updateUserInfo();
       wx.showToast({
         title: '发布成功',
-        duration:3000,
+        duration: 3000,
         success: res => {
           app.globalData.mycenterRefresh = true;
           app.globalData.isDynRefresh = true;
@@ -123,7 +122,7 @@ Page({
       })
     })
   },
-  publishTop(e){
+  publishTop(e) {
     var title = e.detail.value.title;
     if (!title) {
       console.log(title)
@@ -132,8 +131,7 @@ Page({
         icon: 'none'
       })
       return
-    }
-    else{
+    } else {
       var path = '/topic';
       this.editorCtx.getContents({
         success: (res) => {
@@ -149,9 +147,9 @@ Page({
           Request.postRequest(path, data, function () {
             app.globalData.homeIndex = 2;
             wx.switchTab({
-              url: '/pages/home/home'
-            }),
-            getApp().updateUserInfo();
+                url: '/pages/home/home'
+              }),
+              getApp().updateUserInfo();
             wx.showToast({
               title: '发布成功',
               success: res => {
@@ -181,13 +179,22 @@ Page({
   },
   updatePosition(keyboardHeight) {
     const toolbarHeight = 50
-    const { windowHeight, platform } = wx.getSystemInfoSync()
+    const {
+      windowHeight,
+      platform
+    } = wx.getSystemInfoSync()
     let editorHeight = keyboardHeight > 0 ? (windowHeight - keyboardHeight - toolbarHeight) : windowHeight
-    this.setData({ editorHeight, keyboardHeight })
+    this.setData({
+      editorHeight,
+      keyboardHeight
+    })
   },
   calNavigationBarAndStatusBar() {
     const systemInfo = wx.getSystemInfoSync()
-    const { statusBarHeight, platform } = systemInfo
+    const {
+      statusBarHeight,
+      platform
+    } = systemInfo
     const isIOS = platform === 'ios'
     const navigationBarHeight = isIOS ? 44 : 48
     return statusBarHeight + navigationBarHeight
@@ -202,7 +209,10 @@ Page({
     this.editorCtx.blur()
   },
   format(e) {
-    let { name, value } = e.target.dataset
+    let {
+      name,
+      value
+    } = e.target.dataset
     if (!name) return
     // console.log('format', name, value)
     this.editorCtx.format(name, value)
@@ -210,7 +220,9 @@ Page({
   },
   onStatusChange(e) {
     const formats = e.detail
-    this.setData({ formats })
+    this.setData({
+      formats
+    })
   },
   insertDivider() {
     this.editorCtx.insertDivider({
@@ -252,7 +264,7 @@ Page({
         })
         that.editorCtx.insertImage({
           src: "data:image/png;base64," + wx.getFileSystemManager().readFileSync(imgPath, "base64"),
-          src:imgPath,
+          src: imgPath,
           data: {
             id: 'abcd',
             role: 'god'
@@ -278,46 +290,8 @@ Page({
     })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
+  bindinput(e) {
+    console.log(e.detail.html);
   },
 
   /**

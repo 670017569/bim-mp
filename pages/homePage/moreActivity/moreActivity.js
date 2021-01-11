@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    activityList:[]
+    activityList: []
   },
   /**
    * 生命周期函数--监听页面加载
@@ -28,12 +28,13 @@ Page({
     })
     // 请封装自己的网络请求接口，这里作为示例就直接使用了wx.request.
     Request.getRequest("/activity/page?len=5&page=1", function (res) {
+      console.log(res.data.list);
       if (res.data.list.length == 0) {
         wx.showToast({
           title: '暂无活动',
+          icon: 'none'
         })
-      }
-      else {
+      } else {
         //隐藏加载提示框
         wx.hideLoading();
         that.setData({
@@ -59,10 +60,10 @@ Page({
       var resData = res.data.list;
       if (resData.length == 0) {
         wx.showToast({
-          title: '下面没有了',
+          title: '已经到底了哦',
+          icon: 'none'
         })
-      }
-      else {
+      } else {
         //拿到当前的activityList
         var activityList = that.data.activityList;
         //加上新获取到的list
@@ -74,7 +75,7 @@ Page({
       }
     })
   },
-  activityDetail(e){
+  activityDetail(e) {
     let acid = e.currentTarget.dataset.acid;
     wx.navigateTo({
       url: '/pages/homePage/activityDetail/activityDetail?back=true&acid=' + acid,

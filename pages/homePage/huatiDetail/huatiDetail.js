@@ -19,34 +19,34 @@ Page({
     commentCurrentPage: 1,
     comment: [],
     tpid: {},
-    secComment:null,
+    secComment: null,
     userid: {},
     show: false,
-    tocmid:0
+    tocmid: 0
   },
 
 
   showPopup() {
-    this.setData({ 
+    this.setData({
       show: true,
-      
-      });
+
+    });
   },
-  
+
   onClose() {
-    this.setData({ 
+    this.setData({
       show: false,
-    
+
     });
 
   },
 
   sendData: function (e) {
-      console.log(e.currentTarget.dataset.cmid),
-    this.setData({
-      tocmid: e.currentTarget.dataset.cmid,
-      comInputValue: e.currentTarget.dataset.nickName,
-    });
+    console.log(e.currentTarget.dataset.cmid),
+      this.setData({
+        tocmid: e.currentTarget.dataset.cmid,
+        comInputValue: e.currentTarget.dataset.nickName,
+      });
   },
 
   sendDatA: function (e) {
@@ -55,7 +55,7 @@ Page({
       tocmid: e.currentTarget.dataset.cmid,
 
     });
-    console.log("tocmid置空"+that.data.tocmid);
+    console.log("tocmid置空" + that.data.tocmid);
   },
   /**
    * 生命周期函数--监听页面加载
@@ -74,10 +74,10 @@ Page({
     })
     console.log(that.data.tpid);
     var tpid = that.data.tpid;
-    that.getInfo(that.data.commentCurrentPage,tpid);
+    that.getInfo(that.data.commentCurrentPage, tpid);
   },
 
-  getInfo(commentCurrentPage,tpid) {
+  getInfo(commentCurrentPage, tpid) {
     //获取数据
     wx.showLoading({
       title: 'Loading...',
@@ -95,22 +95,21 @@ Page({
       })
     })
 
-    Request.getRequest('/comment/page?len=10&page=' + commentCurrentPage+'&type=topic&toid=' + tpid, function (res) {
+    Request.getRequest('/comment/page?len=10&page=' + commentCurrentPage + '&type=topic&toid=' + tpid, function (res) {
       console.log(res.data);
       wx.hideLoading();
       var resData = res.data;
       console.log(resData.list.length);
       if (resData.list.length == 0) {
         wx.showToast({
-          title: '没有更多了',
+          title: '还没有评论哦',
+          icon: 'none'
         })
-      }
-      else {
+      } else {
         var nowComments = that.data.comment;
         if (commentCurrentPage == 1) {
           nowComments = resData
-        }
-        else {
+        } else {
           nowComments.list = nowComments.list.concat(resData.list);
         }
         that.setData({
@@ -155,7 +154,7 @@ Page({
           path = "/follow/cancel?touserid=" + that.data.user.userid + "&userid=" + that.data.nowUser.userid;
           Request.deleteRequest(path, function () {
             console.log(that.data.nowUser.userid + "取关" + that.data.user.userid);
-            that.getInfo(that.data.commentCurrentPage,that.data.topic.tpid);
+            that.getInfo(that.data.commentCurrentPage, that.data.topic.tpid);
           })
         }
       }
@@ -174,7 +173,7 @@ Page({
       wx.showToast({
         title: '关注成功',
       })
-      that.getInfo(that.data.commentCurrentPage,that.data.topic.tpid);
+      that.getInfo(that.data.commentCurrentPage, that.data.topic.tpid);
     });
   },
 
@@ -182,7 +181,7 @@ Page({
     var content = e.detail.value.content;
     var tpid = that.data.tpid;
     var tocmid = that.data.tocmid;
-    console.log("发评论"+tocmid);
+    console.log("发评论" + tocmid);
     if (!content) {
       wx.showToast({
         title: '请输入内容',
@@ -201,7 +200,7 @@ Page({
       "tocmid": that.data.tocmid
     };
     Request.postRequest(path, data, function () {
-      that.getInfo(that.data.commentCurrentPage,that.data.tpid);
+      that.getInfo(that.data.commentCurrentPage, that.data.tpid);
       wx.showToast({
         title: '发布成功',
         duration: 2000,
@@ -215,7 +214,7 @@ Page({
     that.getInfo(1, that.data.tpid);
   },
 
-  getSecCom: function(e){
+  getSecCom: function (e) {
     let cmid = e.currentTarget.dataset.cmid;
     var that = this;
     var path = '/comment/page/second?len=5&page=1';
@@ -225,9 +224,9 @@ Page({
     Request.postRequest(path, data, function (res) {
       console.log(res.data);
       console.log(cmid + "获取二级评论成功");
-        that.setData({
-          secComment: res.data,
-        })
+      that.setData({
+        secComment: res.data,
+      })
       console.log(that.data.secComment);
     })
     that.getInfo(1, that.data.tpid);

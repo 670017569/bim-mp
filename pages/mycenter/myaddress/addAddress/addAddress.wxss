@@ -11,6 +11,13 @@
   line-height: 108.6rpx;
   font-size: 32.6rpx;
 }
+.none
+{
+  opacity: 0;
+  position: absolute;
+  z-index: 999;
+  width: 100%;
+}
 .name
 {
   float: left;
@@ -28,16 +35,6 @@
 {
   padding-left: 181rpx;
   border-bottom: 1.81rpx solid #eee;
-}
-button{
-  width: 20%;
-  height: 72.4rpx;
-  background: #5495E6;
-  color: #ffffff;
-  font-size: 25.34rpx;
-  float: left;
-  margin-left: 144.8rpx;
-  margin-top: 36.2rpx;
 }
 .input {
   padding-top: 300rpx;
@@ -67,6 +64,13 @@ button{
   color: #aaa;
 }
 
-.usermotto {
-  margin-top: 200px;
+
+.btn {
+  width: 90%;
+  margin: 20rpx auto;
+  padding: 0;
+  height: 72.4rpx;
+  background: #5495E6;
+  color: #ffffff;
+  font-size: 30rpx
 }

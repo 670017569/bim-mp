@@ -339,14 +339,14 @@
 
 
 .left_menu{
-  display: inline-block;
+  /*display: inline-block;*/
   float: left;
   height: 100%;
   width: 18.5%;
   border-right: 3rpx #dedede solid;
 }
 .right_content{
-  display: inline-block;
+  /*display: inline-block;*/
   padding-left: 15rpx;
   float: left;
   height: 100%;

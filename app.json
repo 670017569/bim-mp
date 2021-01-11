@@ -30,7 +30,7 @@
     "pages/home/toutiao/toutiao",
     "pages/homePage/moreActivity/moreActivity",
     "pages/home/toutiao/news_detail/news_detail",
-    "pages/home/dongtai/dongtai",
+    "pages/home/standard/standard",
     "pages/home/huati/huati",
     "pages/home/huati/huatiSearch/huatiSearch",
     "pages/home/huati/searchInput/searchInput",
@@ -73,10 +73,11 @@
     "pages/index/dongtai/dongtai"
   ],
   "window": {
-    "backgroundTextStyle": "light",
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "Abio",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#fff"
   },
   "plugins": {
     "tencentvideo": {
@@ -88,10 +89,9 @@
   "tabBar": {
     "color": "#858585",
     "selectedColor": "#5495E6",
-    "backgroundColor": "#ffffff",
+    "backgroundColor": "#f6f6f6",
     "borderStyle": "white",
-    "list": [
-      {
+    "list": [{
         "pagePath": "pages/home/home",
         "iconPath": "images/tabBar/index.png",
         "selectedIconPath": "images/tabBar/index_click.png",
@@ -109,12 +109,7 @@
         "selectedIconPath": "images/tabBar/cart_click.png",
         "text": "发布"
       },
-      {
-        "pagePath": "pages/shop/shop",
-        "iconPath": "images/tabBar/goods.png",
-        "selectedIconPath": "images/tabBar/goods_click.png",
-        "text": "精品"
-      },
+
       {
         "pagePath": "pages/mycenter/mycenter",
         "iconPath": "images/tabBar/my.png",

@@ -1,5 +1,4 @@
 <!--pages/login/login.wxml-->
-<!--pages/login/login.wxml-->
 <view class="header"> 
   <image src="../../images/wechat.png"></image> 
 </view> 

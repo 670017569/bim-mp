@@ -1,25 +1,24 @@
 //index.js
 //获取应用实例
 let Request = require("../../utils/request"); // 封装请求
-let that=this; // 指向本page
+let that = this; // 指向本page
 const app = getApp()
 
 Page({
   data: {
     motto: 'Hello World',
     hasUserInfo: false,
-    attentionButton:"关注",
+    attentionButton: "关注",
     user: '默认',
-    activity:{},
-    imgUrl:[
+    activity: {},
+    imgUrl: [
       "http://tmp/wx709ec57613620a10.o6zAJsyKmOl0pqIDaGxctAcrUge8.jjznZKLP7PKL5e23b46026364a516cce7477e719a7c5.jpg"
     ],
-    dynamic:{
-      "list":[]
+    dynamic: {
+      "list": []
     },
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    Tabs: [
-      {
+    Tabs: [{
         id: 0,
         name: "动态",
         isActive: true
@@ -30,29 +29,39 @@ Page({
         isActive: false
       },
     ],
-    dynamicCurrentPage:1,
+    dynamicCurrentPage: 1,
   },
 
   methods: {
-    hanldeItemTap(e){
+    hanldeItemTap(e) {
       console.log("点击成功");
-      const { index } = e.currentTarget.dataset;
-      this.triggerEvent("itemChange", { index });
+      const {
+        index
+      } = e.currentTarget.dataset;
+      this.triggerEvent("itemChange", {
+        index
+      });
 
-      let {tabs}=this.data;
-      tabs.forEach((v,i)=>i===index?v.isActive=true:v.isActive=false);
+      let {
+        tabs
+      } = this.data;
+      tabs.forEach((v, i) => i === index ? v.isActive = true : v.isActive = false);
 
       this.setData({
-      tabs
+        tabs
       })
     }
   },
   handleItemChange(e) {
     //接收传递过来的参数
-    const { index } = e.detail;
+    const {
+      index
+    } = e.detail;
     app.globalData.homeIndex = index;
-    
-    let { Tabs } = this.data;
+
+    let {
+      Tabs
+    } = this.data;
     Tabs.forEach((v, i) => i === index ? v.isActive = true : v.isActive = false);
     this.setData({
       Tabs
@@ -61,7 +70,7 @@ Page({
 
 
   onLoad: function () {
-    var that=this;
+    var that = this;
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -91,7 +100,7 @@ Page({
     that.loadInitData();
   },
   getUserInfo: function (e) {
-    var that=this;
+    var that = this;
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     that.setData({
@@ -109,15 +118,12 @@ Page({
     var currentPage = 1;
     // 请封装自己的网络请求接口.
     that.getDynamicsList(currentPage);
-    
+
   },
 
   //动态点赞
-  likeClick: function (e) {
+  likeClick: async function (e) {
     var that = this;
-    // wx.showLoading({
-    //   title: 'Loading...',
-    // })
     //拿到点击的dyid
     let dyid = e.currentTarget.dataset.dyid;
     //拿到当前用户id
@@ -131,31 +137,42 @@ Page({
     var isLike = dynamic.list[index].isLike;
     if (isLike == false) {
       dynamic.list[index].isLike = true;
-      dynamic.list[index].likes ++ ;
+      dynamic.list[index].likes++;
       that.setData({
         dynamic: dynamic
-      }, function () {
-        wx.hideLoading();
       })
-      Request.postRequest("/like?toid=" + dyid + "&type=dynamic&userid=" + userid,null,function (res) {
-        //打印请求结果
-        // console.log(res);
-        console.log("点赞成功");
-      })
-    }
-    else{
+      try {
+        let msg = await Request.request({
+          url: `/bbs/like?toid=${dyid}&type=dynamic&userid=${userid}`,
+          method: 'post'
+        }, false, false)
+        if (msg.statusCode == 200) {
+          console.log("点赞成功");
+        } else {
+          throw new Error("点赞失败");
+        }
+      } catch (error) {
+        console.dir(error.message);
+      }
+    } else {
       dynamic.list[index].isLike = false;
-      dynamic.list[index].likes -- ;
+      dynamic.list[index].likes--;
       that.setData({
         dynamic: dynamic
-      }, function () {
-        wx.hideLoading();
       })
-      Request.deleteRequest("/dislike?toid=" + dyid + "&type=dynamic&userid=" + userid, function (res) {
-        //打印请求结果
-        // console.log(res);
-        console.log("取消赞成功");
-      })
+      try {
+        let msg = await Request.request({
+          url: `/bbs/dislike?toid=${dyid}&type=dynamic&userid=${userid}`,
+          method: 'delete'
+        }, false, false)
+        if (msg.statusCode == 200) {
+          console.log("取消赞成功");
+        } else {
+          throw new Error("取消赞失败");
+        }
+      } catch (error) {
+        console.log(error.message);
+      }
     }
   },
   preview(event) {
@@ -176,23 +193,22 @@ Page({
       url: '/pages/homePage/dynamicDetail/dynamicDetail?dyid=' + dyid
     })
   },
-  
-  
+
+
   attentionClick: function (e) {
     let userid = e.currentTarget.dataset.userid;
-    if (app.globalData.user.userid == userid){
+    if (app.globalData.user.userid == userid) {
       wx.showToast({
         title: '不能关注自己！',
         icon: 'none'
       })
-    }
-    else{
+    } else {
       var path = "/follow";
       var data = {
         "touserid": userid,
         "userid": app.globalData.user.userid
       }
-      Request.postRequest(path, data, function () { });
+      Request.postRequest(path, data, function () {});
       console.log("关注成功！");
       wx.showToast({
         title: '关注成功',
@@ -206,7 +222,7 @@ Page({
       url: '/pages/mycenter/person_index/person_index?userid=' + userid
     })
   },
-  
+
 
 
   //传userid给allComments界面
@@ -233,15 +249,15 @@ Page({
       url: '../logs/logs'
     })
   },
- 
+
   //加载下一页数据
   loadMoreData: function () {
     var homeIndex = app.globalData.homeIndex;
-    this.getDynamicsList(this.data.dynamicCurrentPage+1);
-    
+    this.getDynamicsList(this.data.dynamicCurrentPage + 1);
+
   },
-  
-  getDynamicsList(currentPage){
+
+  getDynamicsList(currentPage) {
     var that = this;
     wx.showLoading({
       title: 'Loading...',
@@ -254,26 +270,26 @@ Page({
       wx.stopPullDownRefresh() //停止下拉刷新
       console.log(res.data)
       var resData = res.data;
-      if (resData.list.length == 0){
+      if (resData.list.length == 0) {
         wx.showToast({
           title: '没有更多了',
+          icon: 'none'
         })
-      }
-      else{
+      } else {
         console.log("getDynamics " + currentPage + " page");
         var nowDynamic = that.data.dynamic;
-        if(currentPage == 1){
+        if (currentPage == 1) {
           nowDynamic = resData
-        }
-        else{
+        } else {
           nowDynamic.list = nowDynamic.list.concat(resData.list);
         }
+        console.log(nowDynamic, app.globalData.user.userid);
         that.setData({
           dynamic: nowDynamic,
           dynamicCurrentPage: currentPage
         })
       }
-      
+
     })
   },
   onReachBottom: function () {

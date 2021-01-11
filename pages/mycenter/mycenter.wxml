@@ -1,71 +1,69 @@
-<view class="amountBg">
-  <view class="img">
-    <image src="{{user.avatar}}" style="width:140rpx;height:140rpx;" bindtap='person_index'></image>
+<view class="base_msg">
+  <view class="amountBg"></view>
+  <view class="user_box">
+    <view class="user_msg">
+      <image src="{{user1.avatar}}" class="user_img" bindtap='person_index'></image>
+      <view class="account">
+        <view style="font-size:35rpx;font-weight:700;">{{user1.nickName}}</view>
+        <view class="integral">{{user1.credit}}积分 <text class="fa fa-question-circle-o" bindtap="creditInfo"></text>
+        </view>
+      </view>
+      <van-button type="default" size="normal" bind:click="sign_click"
+        custom-style="height:60rpx;line-height:60rpx;min-width:150rpx;padding: 0 5rpx;background-color: #4fa1e8; color: #fff; font-size: 32rpx; font-weight: 500;">
+        {{sign_value}}</van-button>
+    </view>
+    <view class="order">
+      <view class="desc" bindtap='MyDynamic'>
+        <view class="number">{{user1.dynamics}}</view>
+        <view>动态</view>
+      </view>
+      <view class="desc" bindtap='MyTopic'>
+        <view class="number">{{user1.topics}}</view>
+        <view>话题</view>
+      </view>
+      <view class="desc" bindtap='MyAttention'>
+        <view class="number">{{user1.follows}}</view>
+        <view>关注</view>
+      </view>
+      <view class="desc" bindtap='MyFans'>
+        <view class="number">{{user1.fans}}</view>
+        <view>粉丝</view>
+      </view>
+    </view>
   </view>
-  <view class="account">
-    <view style="font-size:35rpx">{{user.nickName}}</view>
-    <view class="integral">{{user.credit}}积分 <text class="fa fa-question-circle-o" bindtap="creditInfo"></text></view>
-  </view>
-  <van-button type="default" size="normal" bind:click="sign_click" custom-style="height:60rpx;line-height:60rpx;min-width:150rpx;padding: 0 5rpx;">{{sign_value}}</van-button>
-  <!-- <button class="nav {{nav_font?'nav_font1':'nav_font2'}}" bindtap='sign_click'>{{sign_value}}</button> -->
 </view>
+
 <view class="content">
-<view class="order">
-        <view class="desc" bindtap='MyDynamic'>
-           <view>{{user.dynamics}}</view>
-           <view>动态</view>
-        </view>
-        <view class="desc" bindtap='MyTopic'>
-           <view>{{user.topics}}</view>
-           <view>话题</view>
-        </view>
-        <view class="desc" bindtap='MyAttention'>
-           <view>{{user.follows}}</view>
-           <view>关注</view>
-        </view>
-        <view class="desc" bindtap='MyFans'>
-           <view>{{user.fans}}</view>
-           <view>粉丝</view>
-        </view>
-    </view>  
   <view class="item" bindtap='MyIntegral'>
     <view class="icon">
-      <image src="{{myPoints}}" style="width:22px;height:21px;"></image>
+      <icon class="iconfont icon-yue"></icon>
     </view>
     <view class="itemName">
-        <view>我的砖值</view>
+      <view>砖值</view>
     </view>
-    <view class="right"><van-icon name="arrow" /></view>
-    <view class="hr"></view>
   </view>
   <view class="item" bindtap='MyActivity'>
     <view class="icon">
-      <image src="{{myActivities}}" style="width:22px;height:21px;"></image>
+      <icon class="iconfont icon-huodong"></icon>
     </view>
     <view class="itemName">
-        <view>我的活动</view>
+      <view>活动</view>
     </view>
-    <view class="right"><van-icon name="arrow" /></view>
-    <view class="hr"></view>
   </view>
   <view class="item" bindtap='MyOrder'>
     <view class="icon">
-      <image src="{{myOrder}}" style="width:22px;height:21px;"></image>
+      <icon class="iconfont icon-dingdan"></icon>
     </view>
     <view class="itemName">
-        <view>我的订单</view>
+      <view>订单</view>
     </view>
-    <view class="right"><van-icon name="arrow" /></view>
-    <view class="hr"></view>
   </view>
   <view class="item" bindtap='MyAddress'>
     <view class="icon">
-      <image src="{{myAddress}}" style="width:22px;height:21px;"></image>
+      <icon class="iconfont icon-shouhuodizhi"></icon>
     </view>
     <view class="itemName">
-        <view>我的收货地址</view>
+      <view>收货地址</view>
     </view>
-    <view class="right"><van-icon name="arrow" /></view>
-    <view class="hr"></view>
   </view>
 </view>

@@ -1,31 +1,26 @@
 <view class="page">
-  <view  class="search_row">
-    <form bindsubmit="SearchKey">   
-          <input placeholder='请输入关键字' name = 'content' value="{{searchInputValue}}" style="height:35.2px"></input>
-          <button form-type="submit" >搜索</button>
+  <view class="search_row">
+    <form bindsubmit="SearchKey" class="clear_float">
+      <input placeholder='请输入关键字' name='content' value="{{searchInputValue}}" style="height:35.2px"></input>
+      <button form-type="submit">搜索</button>
     </form>
   </view>
-
-  <view class="topic" wx:for="{{searchInfo.list}}" wx:for-item="item" wx:key="key" bindtap='getTopic' data-tpid="{{item.tpid}}">
+  <view class="topic" wx:for="{{searchInfo.list}}" wx:for-item="item" wx:key="key" bindtap='getTopic'
+    data-tpid="{{item.tpid}}">
     <view class="topic_top">
       <view class="img">
         <image src="{{item.userInfo.avatar}}" class='portrait'></image>
       </view>
-      <view class='nickName'  bindtap='person_index' data-userid="{{item.userInfo.userid}}">{{item.userInfo.nickName}}
+      <view class='nickName' bindtap='person_index' data-userid="{{item.userInfo.userid}}">{{item.userInfo.nickName}}
         <view class="publishTime">{{item.publishTime}}</view>
       </view>
-     
     </view>
-
     <view class='title' bindtap='getTopic' data-tpid="{{item.tpid}}">{{item.title}}</view>
     <view class="bottomText" bindtap='getTopic' data-tpid="{{item.tpid}}">
-      <text class="topicCms"><text class="fa fa-commenting-o"></text><text style="font-size:25rpx"> {{item.cms}}</text></text>
-      <text class="topicClick"><text class="fa fa-eye"></text><text style="font-size:25rpx"> {{item.clicks}}</text></text>
+      <text class="topicCms"><text class="fa fa-commenting-o"></text><text style="font-size:25rpx">
+          {{item.cms}}</text></text>
+      <text class="topicClick"><text class="fa fa-eye"></text><text style="font-size:25rpx">
+          {{item.clicks}}</text></text>
     </view>
-
-  
-  
   </view>
-
-  
 </view>

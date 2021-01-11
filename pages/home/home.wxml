@@ -13,8 +13,22 @@
   <block wx:elif="{{Tabs[2].isActive}}">2</block>
   <block wx:elif="{{Tabs[3].isActive}}">3</block> -->
 </tabs>
-<block wx:if="{{Tabs[0].isActive}}"><include src="toutiao/toutiao"/></block>
-<block wx:elif="{{Tabs[1].isActive}}"><include src="dongtai/dongtai"/></block>
+<!--wx:if 会重新渲染-->
+<!--<block wx:if="{{Tabs[0].isActive}}"><include src="toutiao/toutiao"/></block>
+<block wx:elif="{{Tabs[1].isActive}}"><include src="standard/standard"/></block>
 <block wx:elif="{{Tabs[2].isActive}}"><include src="huati/huati"/></block>
-<block wx:elif="{{Tabs[3].isActive}}"><include src="xuetang/xuetang"/></block>
-
+<block wx:elif="{{Tabs[3].isActive}}"><include src="xuetang/xuetang"/></block>-->
+<view hidden="{{!Tabs[0].isActive}}">
+  <!--<include src="toutiao/toutiao"/>-->
+  <toutiao id="toutiao"></toutiao>
+</view>
+<view hidden="{{!Tabs[1].isActive}}">
+  <!--<include src="standard/standard" />-->
+  <standard id="standard"></standard>
+</view>
+<view hidden="{{!Tabs[2].isActive}}">
+  <huati id="huati"></huati>
+</view>
+<view hidden="{{!Tabs[3].isActive}}">
+  <xuetang id="xuetang"></xuetang>
+</view>

@@ -3,20 +3,21 @@
   <form bindsubmit="changeAddr">
     <view class='content'>
       <view class='name'>收件人：</view>
-      <input type='text' maxlength='5'placeholder='{{address.nickName}}' name = 'nickName'></input>
+      <input type='text' maxlength='5' placeholder='{{address.nickName}}' name='nickName'></input>
     </view>
     <view class='content'>
       <view class='name'>手机号码：</view>
-      <input type='text' maxlength='20'placeholder='{{address.phone}}' name = 'phone'></input>
+      <input type='text' maxlength='20' placeholder='{{address.phone}}' name='phone'></input>
     </view>
     <view class="content address">
-      <picker class="placeholder" mode="multiSelector" bindchange="bindRegionChange" bindcolumnchange="changeRegionColumn" value="{{ multiIndex }}" range="{{ regions }}">
-      <view class="picker">所在地区 :{{currentRegions.province}},{{currentRegions.city}},{{currentRegions.hsien}}</view>
+      <picker class="placeholder" mode="multiSelector" bindchange="bindRegionChange"
+        bindcolumnchange="changeRegionColumn" value="{{ multiIndex }}" range="{{ regions }}">
+        <view class="picker">所在地区 :{{currentRegions.province}},{{currentRegions.city}},{{currentRegions.hsien}}</view>
       </picker>
     </view>
     <view class='content'>
       <view class='name'>详细地址：</view>
-      <input type='text' maxlength='20'placeholder='街道/楼牌号等' value="{{address.address}}" name = 'detailAddr'></input>
+      <input type='text' maxlength='20' placeholder='街道/楼牌号等' value="{{address.address}}" name='detailAddr'></input>
     </view>
     <view class='addresses'>
       <i-panel>
@@ -24,7 +25,7 @@
         </i-radio>
       </i-panel>
     </view>
-    <button class='save' formType="submit">保存</button>
-    <button class='delete' bindtap="deleteAddr">删除</button>
+    <button class='btn' formType="submit">保存</button>
+    <!--<button class='delete' bindtap="deleteAddr">删除</button>-->
   </form>
 </view>

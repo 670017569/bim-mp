@@ -196,5 +196,6 @@ page{
   background-color: #5495E6;
   color: #fff;
   line-height: 80rpx;
+  border-radius: 0;
 }
 

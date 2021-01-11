@@ -73,6 +73,7 @@ Page({
   },
 
   preview(event) {
+    console.log('pre');
     let currentUrl = event.currentTarget.dataset.src
     let URLs = event.currentTarget.dataset.list
     console.log(event.currentTarget.dataset.list)

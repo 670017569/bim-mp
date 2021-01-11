@@ -8,17 +8,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-    activity:{},
-    show:false,
-    back:false,
-    name:'',
-    phone:'',
-    userSms:'',
-    requetSme:'',
+    activity: {},
+    show: false,
+    back: false,
+    name: '',
+    phone: '',
+    userSms: '',
+    requetSme: '',
     remark: '',
     isIphoneX: false,
-    myState:'立即报名',
-    disabled:false,
+    myState: '立即报名',
+    disabled: false,
   },
 
   /**
@@ -44,11 +44,11 @@ Page({
     })
     var back = options.back;
     that.setData({
-      back:back
+      back: back
     })
     that.getInfo(acid);
   },
-  getInfo(acid){
+  getInfo(acid) {
     Request.getRequest("/activity/acid/" + acid + "?userid=" + app.globalData.user.userid, function (res) {
       wx.hideLoading();
       var myState = (res.data.isJoin == true ? '已报名' : '立即报名');
@@ -60,28 +60,27 @@ Page({
       })
     })
   },
-  bkmoreActivity(){
-    if(this.data.back == true){
+  bkmoreActivity() {
+    if (this.data.back == true) {
       wx.navigateBack({
-        delta:1
+        delta: 1
       })
-    }
-    else{
+    } else {
       wx.navigateTo({
         url: '/pages/homePage/moreActivity/moreActivity',
       })
     }
   },
-  showModal(){
+  showModal() {
     var disabled = this.data.disabled;
-    if(disabled == true){
+    if (disabled == true) {
       wx.showModal({
         title: '提示',
         content: '确认取消报名此次活动吗',
         success: function (e) {
           if (e.confirm) {
             var acid = that.data.activity.acid;
-            Request.putRequest("/activity/quit?acid="+acid+"&userid=" + app.globalData.user.userid, null, function () {
+            Request.putRequest("/activity/quit?acid=" + acid + "&userid=" + app.globalData.user.userid, null, function () {
               wx.showToast({
                 title: '取消报名成功',
               })
@@ -90,69 +89,69 @@ Page({
           }
         }
       })
-    }
-    else{
+    } else {
       this.setData({
         show: true
       })
     }
-  }, 
+  },
   onClose() {
-    this.setData({ show: false });
+    this.setData({
+      show: false
+    });
   },
   //发送验证码
-  sendCode(){
+  sendCode() {
     console.log("send Code")
     var phone = this.data.phone;
-    if(phone == null || phone == ''){
+    if (phone == null || phone == '') {
       wx.showToast({
         title: '手机号码不能为空!',
-        icon:'none'
+        icon: 'none'
       })
       return;
-    }
-    else{
+    } else {
       Request.getRequest("/sms/send?phone=" + phone, function (res) {
         var code = res.data.code;
         var message = '发送成功'
         var icon = 'none'
-        if(code == 200){
+        if (code == 200) {
           message = '发送成功';
           icon = 'success'
         }
         wx.showToast({
           title: message,
-          icon:icon
+          icon: icon
         })
       })
-      
+
     }
-    
+
   },
   //活动报名
-  applyActivity(e){
+  applyActivity(e) {
     var data = {
-      "name":this.data.name,
-      "phone":this.data.phone,
-      "remark":this.data.remark,
-      "userid":app.globalData.user.userid,
-      "acid":this.data.activity.acid,
-      "smscode":this.data.userSms
+      "name": this.data.name,
+      "phone": this.data.phone,
+      "remark": this.data.remark,
+      "userid": app.globalData.user.userid,
+      "acid": this.data.activity.acid,
+      "smscode": this.data.userSms
     }
     console.log(data)
-    Request.postRequest("/activity/enter",data,function(res){
+    Request.postRequest("/activity/enter", data, function (res) {
       // console.log(res.data)
       wx.showToast({
         title: '报名成功!',
       })
       that.setData({
-        show:false
+        show: false
       })
     })
   },
-  setName(e){
+  setName(e) {
     this.setData({
-      name:e.detail
+      name: e.detail
     })
   },
   setPhone(e) {
@@ -169,40 +168,6 @@ Page({
     this.setData({
       remark: e.detail
     })
-  },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
   },
 
   /**

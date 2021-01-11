@@ -2,30 +2,34 @@ let app = getApp()
 let Request = require("../../utils/request"); // 封装请求
 let that; // 指向本page
 Page({
-  data:{
-    myPoints:"/images/my/Mypoints.png",
-    myActivities: "/images/my/Myactivities.png",
-    myOrder: "/images/my/Myorder.png",
-    myAddress: "/images/my/Myaddress.png",
-    sign_value:"签到",
-    nav_font:true,
-    user:{
-      "nickName" : "未登录",
-      "dynamics" : 0,
-      "topics":0,
-      "follows":0,
-      "fans" :0,
+  data: {
+    sign_value: "签到",
+    nav_font: true,
+    user: {
+      "nickName": "未登录",
+      "dynamics": 0,
+      "topics": 0,
+      "follows": 0,
+      "fans": 0,
     },
-    brick:'',
-    sign_in_number:0,
-    signinToday:null,
-    token:''
+    user1: {
+      "avatar": "../../images/test.png",
+      "nickName": "未登录",
+      "dynamics": 100,
+      "topics": 32,
+      "follows": 97,
+      "fans": 12134,
+    },
+    brick: '',
+    sign_in_number: 0,
+    signinToday: null,
+    token: ''
   },
-  onLoad:function(options){
+  onLoad: function (options) {
     that = this
     this.getUserInfoFromApp();
   },
-  getUserInfoFromApp(){
+  getUserInfoFromApp() {
     console.log("从全局变量中获取user")
     var signValue = this.data.sign_value;
     if (app.globalData.user.signinToday == true) {
@@ -41,25 +45,25 @@ Page({
       token: app.globalData.accesstoken.access_token
     })
   },
-  onShow:function(){
+  onShow: function () {
     var mycenterRefresh = app.globalData.mycenterRefresh;
-    if(mycenterRefresh){
+    if (mycenterRefresh) {
       app.updateUserInfo();
       app.globalData.mycenterRefresh = false;
     }
     console.log("mycenter onShow")
     that.getUserInfoFromApp();
   },
-  creditInfo:function(){ 
-    wx.navigateTo({ 
-      url: '../mycenter/credit/credit', 
-    }) 
+  creditInfo: function () {
+    wx.navigateTo({
+      url: '../mycenter/credit/credit',
+    })
   },
 
-  sign_click(e){
-    if(this.data.user.signinToday == true) return
+  sign_click(e) {
+    if (this.data.user.signinToday == true) return
     var path = "/user/sign?userid=" + this.data.user.userid
-    Request.putRequest(path,10,function(){
+    Request.putRequest(path, 10, function () {
       var sign_in_number = that.data.sign_in_number + 1;
       wx.showToast({
         title: "已签到" + sign_in_number + "天",
@@ -73,7 +77,7 @@ Page({
           user: app.globalData.user
         })
       })
-      
+
     })
 
   },

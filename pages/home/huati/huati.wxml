@@ -1,24 +1,33 @@
+<!--pagesComponents/homeComponents/huati/huati.wxml-->
 <view class="pages" style='height:1200rpx'>
-  <view class="searchInput">
-    <navigator class="searchInput_navigator" url="/pages/home/huati/searchInput/searchInput">搜索一下</navigator>
-  </view>
-  <view class='huati_main'>
-    <view wx:for="{{topic.list}}" wx:key="key" wx:for-item="item" class='huatiItem'>
-      <view class="img">
-        <image src="{{item.userInfo.avatar}}" class='portrait' bindtap="person_index" data-userid="{{item.userInfo.userid}}"></image>
-      </view>
-      <view class='nickName'  bindtap='person_index' data-userid="{{item.userInfo.userid}}">{{item.userInfo.nickName}}
-        <view class="dynamicTime">{{item.publishTime}}</view>
-      </view>
-      <view class='clear'></view>
-      <view class='title' bindtap='getTopic' data-tpid="{{item.tpid}}">{{item.title}}</view>
-      <view class="bottomText" bindtap='getTopic' data-tpid="{{item.tpid}}">
-        <text class="topicCms"><text class="fa fa-commenting-o"></text><text style="font-size:25rpx"> {{item.cms}}</text></text>
-        <text class="topicClick"><text class="fa fa-eye"></text><text style="font-size:25rpx"> {{item.clicks}}</text></text>
-      </view>
+    <view class="searchInput">
+        <navigator class="searchInput_navigator" url="/pages/home/huati/searchInput/searchInput">搜索一下</navigator>
     </view>
-
-    
-  </view>
-  <view class='fenge'></view>
+    <view class='huati_main'>
+        <view wx:for="{{topic}}" wx:key="key" wx:for-item="item" class='huatiItem'>
+            <view class="img">
+                <image src="{{item.userInfo.avatar}}" class='portrait' bindtap="person_index"
+                    data-userid="{{item.userInfo.userid}}"></image>
+            </view>
+            <view class='nickName' bindtap='person_index' data-userid="{{item.userInfo.userid}}">
+                {{item.userInfo.nickName}}
+                <view class="dynamicTime">{{item.publishTime}}</view>
+            </view>
+            <view class='clear'></view>
+            <view class='title' bindtap='getTopic' data-tpid="{{item.tpid}}">{{item.title}}</view>
+            <view class="bottomText" bindtap='getTopic' data-tpid="{{item.tpid}}">
+                <view class="topicCms">
+                    <icon class="fa fa-commenting-o"></icon>
+                    <text style="font-size:25rpx">
+                        {{item.cms}}</text>
+                </view>
+                <view class="topicClick">
+                    <icon class="fa fa-eye"></icon>
+                    <text style="font-size:25rpx">
+                        {{item.clicks}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class='fenge'></view>
 </view>

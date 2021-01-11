@@ -1,143 +1,141 @@
 {
-  "description": "项目配置文件",
-  "packOptions": {
-    "ignore": []
-  },
-  "setting": {
-    "urlCheck": true,
-    "es6": true,
-    "enhance": false,
-    "postcss": true,
-    "preloadBackgroundData": false,
-    "minified": true,
-    "newFeature": true,
-    "coverView": true,
-    "nodeModules": true,
-    "autoAudits": false,
-    "showShadowRootInWxmlPanel": true,
-    "scopeDataCheck": false,
-    "uglifyFileName": false,
-    "checkInvalidKey": true,
-    "checkSiteMap": true,
-    "uploadWithSourceMap": true,
-    "compileHotReLoad": false,
-    "useMultiFrameRuntime": false,
-    "useApiHook": true,
-    "babelSetting": {
-      "ignore": [],
-      "disablePlugins": [],
-      "outputPath": ""
-    },
-    "useIsolateContext": true,
-    "useCompilerModule": true,
-    "userConfirmedUseCompilerModuleSwitch": false,
-    "packNpmManually": false,
-    "packNpmRelationList": []
-  },
-  "compileType": "miniprogram",
-  "libVersion": "2.8.3",
-  "appid": "wx709ec57613620a10",
-  "projectname": "bmy-wechat-miniprogram",
-  "debugOptions": {
-    "hidedInDevtools": []
-  },
-  "isGameTourist": false,
-  "simulatorType": "wechat",
-  "simulatorPluginLibVersion": {},
-  "condition": {
-    "search": {
-      "current": -1,
-      "list": []
-    },
-    "conversation": {
-      "current": -1,
-      "list": []
-    },
-    "plugin": {
-      "current": -1,
-      "list": []
-    },
-    "game": {
-      "currentL": -1,
-      "list": []
-    },
-    "gamePlugin": {
-      "current": -1,
-      "list": []
-    },
-    "miniprogram": {
-      "current": -1,
-      "list": [
-        {
-          "id": 0,
-          "name": "精品",
-          "pathName": "pages/shop/shop",
-          "query": "",
-          "scene": null
-        },
-        {
-          "id": -1,
-          "name": "活动详情",
-          "pathName": "pages/homePage/activityDetail/activityDetail",
-          "query": "",
-          "scene": null
-        },
-        {
-          "id": -1,
-          "name": "pages/index/index",
-          "pathName": "pages/index/index",
-          "query": "",
-          "scene": null
-        },
-        {
-          "id": -1,
-          "name": "pages/login/login",
-          "pathName": "pages/login/login",
-          "query": "",
-          "scene": null
-        },
-        {
-          "id": -1,
-          "name": "pages/home/huati/searchInput/searchInput",
-          "pathName": "pages/home/huati/searchInput/searchInput",
-          "query": "",
-          "scene": null
-        },
-        {
-          "id": -1,
-          "name": "视频",
-          "pathName": "pages/home/xuetang/course_video/course_video",
-          "query": "",
-          "scene": null
-        },
-        {
-          "id": -1,
-          "name": "pages/home/xuetang/moreCourse/moreCourse",
-          "pathName": "pages/home/xuetang/moreCourse/moreCourse",
-          "query": "",
-          "scene": null
-        },
-        {
-          "id": -1,
-          "name": "pages/index/index",
-          "pathName": "pages/index/index",
-          "query": "",
-          "scene": null
-        },
-        {
-          "id": -1,
-          "name": "pages/index/allComments/allComments",
-          "pathName": "pages/index/allComments/allComments",
-          "query": "",
-          "scene": null
-        },
-        {
-          "id": -1,
-          "name": "pages/index/allLike/allLike",
-          "pathName": "pages/index/allLike/allLike",
-          "scene": null
-        }
-      ]
-    }
-  }
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"enhance": true,
+		"postcss": true,
+		"preloadBackgroundData": false,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"nodeModules": true,
+		"autoAudits": false,
+		"showShadowRootInWxmlPanel": true,
+		"scopeDataCheck": false,
+		"uglifyFileName": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"compileHotReLoad": false,
+		"useMultiFrameRuntime": false,
+		"useApiHook": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"enableEngineNative": false,
+		"bundle": false,
+		"useIsolateContext": true,
+		"useCompilerModule": true,
+		"userConfirmedUseCompilerModuleSwitch": false,
+		"userConfirmedBundleSwitch": false,
+		"packNpmManually": false,
+		"packNpmRelationList": [],
+		"minifyWXSS": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.13.2",
+	"appid": "wx709ec57613620a10",
+	"projectname": "Bim",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"plugin": {
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"gamePlugin": {
+			"list": []
+		},
+		"miniprogram": {
+			"list": [
+				{
+					"id": 0,
+					"name": "精品",
+					"pathName": "pages/shop/shop",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "活动详情",
+					"pathName": "pages/homePage/activityDetail/activityDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/login/login",
+					"pathName": "pages/login/login",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/home/huati/searchInput/searchInput",
+					"pathName": "pages/home/huati/searchInput/searchInput",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "视频",
+					"pathName": "pages/home/xuetang/course_video/course_video",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/home/xuetang/moreCourse/moreCourse",
+					"pathName": "pages/home/xuetang/moreCourse/moreCourse",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/allComments/allComments",
+					"pathName": "pages/index/allComments/allComments",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/allLike/allLike",
+					"pathName": "pages/index/allLike/allLike",
+					"query": "",
+					"scene": null
+				},
+				{
+					"name": "pages/mycenter/myaddress/myaddress",
+					"pathName": "pages/mycenter/myaddress/myaddress",
+					"scene": null
+				}
+			]
+		}
+	}
 }

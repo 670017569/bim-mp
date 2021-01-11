@@ -1,0 +1,67 @@
+<!--homeComponents/standard/standard.wxml-->
+<view class="standard">
+	<view class="standard_province_container">
+		<van-collapse value="{{ activeNames }}" bind:change="onChange">
+			<van-collapse-item title="国内" name="1">
+				<view
+				 class="{{biaozhunCurrentProvince==item?'standard_province_hover':'standard_province'}}"
+				 wx:for="{{biaozhunLeft}}"
+				 wx:key="key"
+				 wx:for-item="item"
+				 bindtap="handleBiaozhunItem"
+				 data-province="{{item}}"
+				 data-id="{{item.id}}"
+				>
+					{{item.name}}
+				</view>
+			</van-collapse-item>
+			<van-collapse-item title="国外" name="2">
+				<view
+				 class="{{biaozhunCurrentProvince==item.province?'standard_province_hover':'standard_province'}}"
+				 wx:for="{{biaozhun}}"
+				 wx:key="key"
+				 wx:for-item="item"
+				 bindtap="handleBiaozhunItem"
+				 data-province="{{item.province}}"
+				 wx:if="{{item.isforeign == true}}"
+				>
+					{{item.province}}
+				</view>
+			</van-collapse-item>
+		</van-collapse>
+	</view>
+
+	<view class="standard_content">
+		<view
+		 wx:for="{{biaozhunRight}}"
+		 wx:key="key"
+		 wx:for-item="item"
+		 wx:if="{{item.province == biaozhunCurrentProvince}}"
+		 class="standard_view"
+		>
+			<!-- <view data-url="{{item.url}}" bindtap='downloadFile'>
+        <view class="biaozhunTitle">{{item.title}}</view>
+      </view>
+      <view class="standard_time">
+        {{item.publishTime}}
+      </view> -->
+			<view data-url="{{item.url}}" bindtap='downloadFile'>
+				<van-cell-group>
+					<van-cell
+					 border="{{ false }}"
+					 use-label-slot="true"
+					 is-link
+					>
+						<view slot="title">
+							<view class="van-cell-text ">{{item.title}}</view>
+						</view>
+						<view slot="label">
+							<van-tag plain type="primary">{{item.publishTime}}</van-tag>
+						</view>
+					</van-cell>
+				</van-cell-group>
+			</view>
+		</view>
+	</view>
+</view>
+

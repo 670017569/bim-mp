@@ -2,24 +2,51 @@
 <view class='myaddress'>
   <view wx:for="{{address.list}}" wx:key="key" wx:for-item="item" data-index="{{index}}" bindtap='changeAddress'>
     <block wx:if="{{item.isDefault == true}}">
-      <view class='content'>
-        <view class='name'>{{item.nickName}}</view>
-        <view class='default'>默认地址</view>
-        <view class='phonenumber'>{{item.phone}}</view>
-        <view class='address'>{{item.regions.province}}{{item.regions.city}}{{item.regions.hsien}}{{item.address}}</view>
+      <view class="box clear_float" data-id="{{item.addrid}}"
+        style='transform: translateX(-{{width[item.addrid]}}rpx);transition:all 0.2s' bindtouchstart='touchStart'
+        bindtouchend='touchEnd'>
+        <view class='content'>
+          <view class='name'>{{item.nickName}}</view>
+          <view class='default'>默认地址</view>
+          <view class='phonenumber'>{{item.phone}}</view>
+          <view class='address'>{{item.regions.province}}{{item.regions.city}}{{item.regions.hsien}}{{item.address}}
+          </view>
+        </view>
+        <view class="dot_box" catchtap='deleteOut' data-id="{{item.addrid}}">
+          <view class="dot"></view>
+          <view class="dot"></view>
+          <view class="dot"></view>
+        </view>
+        <view class='delete' catchtap='deleteAddr' data-id="{{item.addrid}}">
+          <image src="/images/delete.png" mode="widthFix"></image>
+        </view>
       </view>
     </block>
   </view>
   <view wx:for="{{address.list}}" wx:key="key" wx:for-item="item" data-index="{{index}}" bindtap='changeAddress'>
     <block wx:if="{{item.isDefault == false}}">
-      <view class='content'>
-        <view class='name'>{{item.nickName}}</view>
-        <view class='phonenumber'>{{item.phone}}</view>
-        <view class='address'>{{item.regions.province}}{{item.regions.city}}{{item.regions.hsien}}{{item.address}}</view>
+      <view class="box clear_float" data-id="{{item.addrid}}"
+        style='transform: translateX(-{{width[item.addrid]}}rpx);transition:all 0.2s' bindtouchstart='touchStart'
+        bindtouchend='touchEnd'>
+        <view class='content'>
+          <view class='name'>{{item.nickName}}</view>
+          <view class='phonenumber'>{{item.phone}}</view>
+          <view class='address'>{{item.regions.province}}{{item.regions.city}}{{item.regions.hsien}}{{item.address}}
+          </view>
+        </view>
+        <view class="dot_box" catchtap='deleteOut' data-id="{{item.addrid}}">
+          <view class="dot"></view>
+          <view class="dot"></view>
+          <view class="dot"></view>
+        </view>
+        <view class='delete' catchtap='deleteAddr' data-id="{{item.addrid}}">
+          <image src="/images/delete.png" mode="widthFix"></image>
+        </view>
       </view>
     </block>
   </view>
   <view class="bottomButton {{isIphoneX ? 'iphonex_bottom':''}}">
-    <van-button type="primary" size="normal" color="#5495E6" icon="plus" custom-style="width:100%;height:100%;font-size:30rpx" bind:click="addAddress">添加新地址</van-button>
+    <van-button type="primary" size="normal" color="#5495E6" icon="plus"
+      custom-style="width:100%;height:100%;font-size:30rpx" bind:click="addAddress">添加新地址</van-button>
   </view>
 </view>

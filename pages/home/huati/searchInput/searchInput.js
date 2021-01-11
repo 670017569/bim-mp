@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    searchInfo:{},
+    searchInfo: {},
     searchInputValue: null
   },
 
@@ -18,10 +18,8 @@ Page({
   onLoad: function (options) {
     that = this;
   },
-
-
-  SearchKey(e) {
-    console.log(that.data.searchInfo);
+  //搜索关键词
+  async SearchKey(e) {
     var content = e.detail.value.content;
     if (!content) {
       wx.showToast({
@@ -30,58 +28,32 @@ Page({
       })
       return;
     }
-    Request.getRequest("/topic/keyword?key="+content+"&len=15&page=1", function (res) {
-      console.log(res.data);
-      if (res.data.list.length == 0) {
+    try {
+      var msg = await Request.request({
+        url: `/bbs/topic/keyword?key=${content}&len=15&page=1`
+      });
+      if (msg.data.list.length === 0) {
         wx.showToast({
-          title: '抱歉，无结果',
-          duration: 2000,
+          title: '抱歉，未查询到结果',
+          icon: 'none'
         })
         that.setData({
-          searchInputValue:'',
+          searchInputValue: '',
         })
-        
       }
       that.setData({
-        searchInfo: res.data,
+        searchInfo: msg.data,
       })
-      
-    })
+    } catch (error) {
+      console.log(error);
+    }
   },
-
+  //话题跳转详情页
   getTopic: function (e) {
     let tpid = e.currentTarget.dataset.tpid;
     wx.navigateTo({
       url: '/pages/homePage/huatiDetail/huatiDetail?tpid=' + tpid
     })
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
   },
 
   /**

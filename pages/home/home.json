@@ -1,7 +1,11 @@
 {
   "usingComponents": {
-    "tabs": "../../../components/tabs/tabs"
+    "tabs": "../../../components/tabs/tabs",
+    "toutiao": "toutiao/toutiao",
+    "standard": "standard/standard",
+    "huati": "huati/huati",
+    "xuetang": "xuetang/xuetang"
   },
-  "enablePullDownRefresh":true,
+  "enablePullDownRefresh": true,
   "disableScroll": false
 }

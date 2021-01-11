@@ -1,21 +1,21 @@
 //app.js
 
 let Request = require('/utils/request');
-let that = this
+let that = this;
 App({
 
   // app全局变量
   globalData: {
-    accesstoken:{},
-    user:"",
-    homeIndex:0,
-    mycenterRefresh:false,
+    accesstoken: {},
+    user: "",
+    homeIndex: 0,
+    mycenterRefresh: false,
     isDynRefresh: true,
     isTopRefresh: true,
     checkLogin: false,
-    isIphoneX:false,
-    cartNum:0,
-    goodsBack:false
+    isIphoneX: false,
+    cartNum: 0,
+    goodsBack: false
   },
 
   // 登陆码
@@ -29,76 +29,81 @@ App({
    */
   onLaunch: function () {
     that = this;
-    // this.userInit(function(){
-    //   console.log("aaa");
-    // });
     wx.getSystemInfo({
       success: res => {
         let modelmes = res.model;
-        console.log(modelmes);
+        //console.log(modelmes);
         if (modelmes.search('iPhone X') != -1 || modelmes.search('iPhone 11') != -1) {
           that.globalData.isIphoneX = true
         }
       }
     })
   },
-  onShow:function(){
-  },
 
   /**
    * 读取用户授权状态
    * 在拥有登陆授权时调取getLoginCode和getUserInfo获取登陆需要的信息
    */
-  userInit: function (callback){
-    wx.getSetting({
-      success: settings => {
-        console.log(settings);
-        if (settings.authSetting['scope.userInfo']) {
-          console.log("已经授权")
-          this.getUserInfo(callback);
-          this.getLoginCode(callback);
-        }
-        else{
-          console.log("未授权")
-          wx.navigateTo({
-            url: '/pages/login/login',//授权页面
-          })
-        }
-      },
+  userInit: function () {
+    return new Promise((resole, reject) => {
+      wx.getSetting({
+        success: async (settings) => {
+          //判断是否授权
+          if (settings.authSetting['scope.userInfo']) {
+            try {
+              //得到userInfo
+              this.userInfo = await this.getUserInfo();
+              //得到loginCode
+              this.loginCode = await this.getLoginCode();
+              console.log(this.loginCode)
+              //登录
+              this.login();
+            } catch (error) {
+              console.log(error);
+              wx.showToast({
+                title: '小程序出错',
+                icon: 'none'
+              })
+            }
+          } else {
+            wx.navigateTo({
+              url: '/pages/login/login', //授权页面
+            })
+          }
+        },
+      })
     })
   },
 
   /**
    * 获取登陆码
-   * 检查用户信息是否就绪
-   * 异步调用login方法
    */
-  getLoginCode: function (callback){
-    wx.login({
-      success: res => {
-        console.log(res);
-        this.loginCode = res;
-        if (this.userInfo) {
-          this.login(callback);
+  getLoginCode: function () {
+    return new Promise((resolve, reject) => {
+      wx.login({
+        success: res => {
+          resolve(res);
+        },
+        fail(error) {
+          reject(error);
         }
-      },
+      })
     })
   },
 
   /**
    * 获取用户信息
-   * 检查登陆码是否就绪
-   * 异步调用login方法
    */
-  getUserInfo: function (callback){
-    wx.getUserInfo({
-      success: res => {
-        console.log(res);
-        this.userInfo = res;
-        if(this.loginCode){
-          this.login(callback)
+  getUserInfo: function () {
+    return new Promise((resole, reject) => {
+      wx.getUserInfo({
+        success: res => {
+          resole(res);
+        },
+        fail(error) {
+          reject(error);
         }
-      },
+      })
     })
   },
 
@@ -107,32 +112,85 @@ App({
    * 返回完整的用户资料
    * 将用户资料保存至app.global.userInfo
    */
-  login: function (callback){
-    Request.postRequest('/oauth/wx',{
-      loginCode: this.loginCode.code,
-      userInfo: this.userInfo.rawData,
-      signature: this.userInfo.signature,
-    },function (res) {
-      that.globalData.accesstoken = res.data;
-      console.log(res.data)
-      if (res.data.access_token == null || res.data.access_token == undefined){
-        that.userInit(function(){});
-      }
-      Request.getRequest("/user/me?access_token=" + res.data.access_token, function (res) {
-        that.globalData.user = res.data;
-        console.log(res.data);
-        callback(res);
+  login: async function () {
+    try {
+      let token = await wx.getStorageSync('token');
+      token = await that.getToken();
+      // if (!token) {
+      //   token = await that.getToken();
+      // }
+      let msg = await Request.request({
+        url: `/wx/me`
+      });
+      console.log(msg);
+      // 判断token是否有效，无效重新获取token
+      // if (msg) {
+      //   token = await this.getToken();
+      //   msg = await Request.BBSRequest({
+      //     url: `/user/me?access_token=${token.access_token}`
+      //   });
+      // }
+      that.globalData.user = msg.data;
+    } catch (error) {
+      console.log(error);
+      wx.showToast({
+        title: '登录失败',
+        icon: 'none'
       })
-    });
+    }
   },
-  
+
+  /*
+   * 请求 access_token
+   */
+  getToken() {
+    return new Promise(async (resolve, reject) => {
+      try {
+        let msg = await Request.request({
+          url: '/wx/oauth/token',
+          method: 'post',
+          data: {
+            loginCode: this.loginCode.code,
+            userInfo: this.userInfo.rawData,
+            signature: this.userInfo.signature
+          }
+        }, true);
+        //得到 access_token
+        console.log(msg.data);
+        that.globalData.accesstoken = msg.data;
+        await wx.setStorage({
+          data: msg.data,
+          key: 'token',
+        });
+        resolve(msg.data);
+      } catch (error) {
+        console.log(error);
+        reject(error);
+      }
+    })
+  },
+
   /**
    * 更新用户信息
    */
-  updateUserInfo:function(){
-    Request.getRequest("/user/me?access_token=" + that.globalData.accesstoken.access_token, function (res) {
-      that.globalData.user = res.data;
-      console.log("更新用户信息成功!")
-    })
+  updateUserInfo: async function () {
+    try {
+      let msg = await Request.request({
+        url: `/wx/me`
+      });
+      that.globalData.user = msg.data;
+      console.log("更新用户信息成功!");
+    } catch (error) {
+      console.log(error);
+      console.log("更新用户信息失败!");
+    }
   }
 });
+
+
+// {
+//   "pagePath": "pages/shop/shop",
+//   "iconPath": "images/tabBar/goods.png",
+//   "selectedIconPath": "images/tabBar/goods_click.png",
+//   "text": "精品"
+// },

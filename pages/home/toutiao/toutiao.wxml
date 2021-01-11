@@ -1,22 +1,26 @@
+<!--homeComponents/toutiao/toutiao.wxml-->
 <view>
-    <swiper class='lunbo' indicator-dots circular autoplay style="text-align: center;">
-      <block wx:for="{{activity.list}}" wx:key="item">
-        <swiper-item >
-          <navigator url="/pages/homePage/activityDetail/activityDetail?acid={{item.acid}}&back=false" style="height: 100%;width: 100%;">
-            <!-- <image src="{{item.thumb}}" class="slide-image" width="355" height=""/>     -->
-            <view style="height:100%;width:100%"><van-image width="100%" height="100%" src="{{item.thumb}}" fit="contain" /></view>
-          </navigator>
-        </swiper-item>
-      </block>
-    </swiper>
+  <swiper class='lunbo' indicator-dots circular autoplay style="text-align: center;">
+    <block wx:for="{{activity.list}}" wx:key="item">
+      <swiper-item>
+        <navigator url="/pages/homePage/activityDetail/activityDetail?acid={{item.acid}}&back=false"
+          style="height: 100%;width: 100%;">
+          <!-- <image src="{{item.thumb}}" class="slide-image" width="355" height=""/>     -->
+          <view style="height:100%;width:100%">
+            <van-image width="100%" height="100%" src="{{item.thumb}}" fit="contain" />
+          </view>
+        </navigator>
+      </swiper-item>
+    </block>
+  </swiper>
 
   <view class='news_tab'>
     <view class='tab_hot_news'>今日热点</view>
     <navigator url='/pages/home/toutiao/all_news/all_news?type=news' class='tab_all_news'>
       全部新闻
-    </navigator>  
+    </navigator>
   </view>
-  <view wx:for="{{news.list}}" wx:key="key" wx:for-item="item">
+  <view wx:for="{{news}}" wx:key="key" wx:for-item="item">
     <navigator class='news' url="/pages/home/toutiao/news_detail/news_detail?url={{item.url}}">
       <view class='news_info'>
         <text class="newsTitle">{{item.title}}</text>
@@ -26,10 +30,10 @@
           <text>{{item.publishTime}}</text>
         </view>
       </view>
-      <view class='news_img'><van-image width="100%" height="100%" src="{{item.thumb}}" fit="contain" /></view>
-      
+      <view class='news_img'>
+        <van-image width="100%" height="100%" src="{{item.thumb}}" fit="contain" />
+      </view>
     </navigator>
     <view class='news_fenge'></view>
   </view>
 </view>
-

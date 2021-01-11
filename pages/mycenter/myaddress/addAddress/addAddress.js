@@ -19,22 +19,26 @@ Page({
    * 页面的初始数据
    */
   data: {
+    //储存显示地区
+    address: [],
+    //是否已有默认值
+    addressIsempty: true,
     //地区三位数组的初始数据
-    regions:[],
+    regions: [],
     //省级列表数组
-    provinces:[],
+    provinces: [],
     //市级列表数组
-    cities:[],
+    cities: [],
     //区县级列表数组
-    hsiens:[],
+    hsiens: [],
     //对应regions三个子数组的索引
-    multiIndex:[0,0,0],
-    userid:0,
+    multiIndex: [0, 0, 0],
+    userid: 0,
     //最终存到数据库中的区县级id
-    hsienId:2,
+    hsienId: 2,
     checked: false
   },
-  addAddr(e){
+  addAddr(e) {
     var value = e.detail.value;
     var nickName = value.nickName;
     var phone = value.phone;
@@ -42,109 +46,124 @@ Page({
     var city = this.data.hsienId;
     var checked = this.data.checked;
     var userid = this.data.userid;
+    var hsienId = this.data.hsienId;
     var address = {
       "address": detailAddr,
       "city": city,
       "isDefault": checked,
       "nickName": nickName,
       "phone": phone,
-      "userid": userid
+      "userid": userid,
+      "hsienId": hsienId
     }
     console.log('添加地址：')
     console.log(address);
     var path = '/addr'
-    Request.postRequest(path, address,res=>{
-      console.log(res.data)
+    Request.postRequest(path, address, res => {
+      console.log(res.data);
+      wx.navigateBack();
     })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: async function (options) {
     var that = this;
     //Promise方式调用，保证函数按顺序执行
-    this.getAllProvince().then(function(id){
-        that.getAllCities(id).then(function(id){
-          that.getAllHisen(id)
-        })
+    this.getAllProvince().then(function (id) {
+      that.getAllCities(id).then(function (id) {
+        that.getAllHisen(id)
+      })
     })
+
     this.setData({
-    userid:app.globalData.user.userid,
+      userid: app.globalData.user.userid,
     })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-  },
+  onReady: function () {},
 
   /**
    * 获取所有省级单位
    */
-  getAllProvince:function() {
-    var that = this; 
-    return new Promise(function(resolve,reject){
-      Request.getAreaRequest('/provinces',{},res=>{
+  getAllProvince: async function () {
+    var that = this;
+    return new Promise(function (resolve, reject) {
+      Request.getAreaRequest('/provinces', {}, res => {
         var provinceList = res.data;
         // var provinceArr = provinceList.map((item) => { return item.name })
         var provinceArr = [];
-        for(let i in provinceList){
+        for (let i in provinceList) {
           provinceArr[i] = provinceList[i].name
         }
         that.setData({
-          regions: [provinceArr, [], []], // 更新三维数组 
+          regions: [provinceArr, [],
+            []
+          ], // 更新三维数组 
           provinces: provinceArr,
-          provinceList:provinceList
+          provinceList: provinceList
         })
         resolve(res.data[0].id);
-      }) 
+      })
     })
-    
-     
-} ,
-  
+
+
+  },
+
   /**
    * 根据已选择的省份id获取该省下所有市级单位
    */
-  getAllCities: function (id){
+  getAllCities: function (id) {
     var that = this;
-    return new Promise(function(resolve,reject){
-      Request.getAreaRequest('/areas',{id:id},res=>{
+    return new Promise(function (resolve, reject) {
+      Request.getAreaRequest('/areas', {
+        id: id
+      }, res => {
         var cityList = res.data;
 
         // var cityArr = cityList.map((item) => {return item.name});
         var cityArr = [];
-        for(let i in cityList){
+        for (let i in cityList) {
           cityArr[i] = cityList[i].name
         }
         that.setData({
-            regions:[that.data.provinces,cityArr,[]],
-            cities:cityArr,
-            cityList:cityList
+          regions: [that.data.provinces, cityArr, []],
+          cities: cityArr,
+          cityList: cityList
         })
         resolve(res.data[0].id)
       })
     })
-    
+
   },
   /**
    * 根据已选择的市的id获取该市下所有县级单位
    * @param {*} id 
    */
-  getAllHisen: function(id){
+  getAllHisen: function (id) {
     var that = this;
-    Request.getAreaRequest('/areas',{id:id},res=>{
-      var hsienList = res.data; 
+    Request.getAreaRequest('/areas', {
+      id: id
+    }, res => {
+      var hsienList = res.data;
       // var hsienArr = hsienList.map((item) => {return item.name});
       var hsienArr = [];
-      for(var i in hsienList){
+      for (var i in hsienList) {
         hsienArr[i] = hsienList[i].name
       }
+      if (this.data.addressIsempty) {
+        this.setData({
+          address: [this.data.provinces[0], this.data.cities[0], hsienArr[0]],
+          addressIsempty: false
+        })
+      }
       that.setData({
-            regions:[this.data.provinces,this.data.cities,hsienArr],
-            hsiens:hsienArr,
-            hsienList:hsienList
+        regions: [this.data.provinces, this.data.cities, hsienArr],
+        hsiens: hsienArr,
+        hsienList: hsienList
       })
     })
   },
@@ -152,7 +171,7 @@ Page({
    * 单列切换事件监听
    * @param {*} e 
    */
-  changeRegionColumn: function(e) {
+  changeRegionColumn: function (e) {
     var that = this;
     var index = this.data.multiIndex;
     //主要是注意地址文件中的字段关系，省、市、区关联的字段有 sheng、di、level
@@ -161,19 +180,19 @@ Page({
       case 0:
         index = [e.detail.value, 0, 0];
         that.setData({
-            //保证复合索引同步
-            multiIndex: index
+          //保证复合索引同步
+          multiIndex: index
         })
         var selectedProvinceId = that.data.provinceList[e.detail.value].id;
         // var defaultCityId = that.data.cityList[0].id;
-        this.getAllCities(selectedProvinceId).then(function(id){
+        this.getAllCities(selectedProvinceId).then(function (id) {
           that.getAllHisen(id)
         })
         break;
-      //切换市一级数据，省一级数据保持不变，更新区县一级的数据
+        //切换市一级数据，省一级数据保持不变，更新区县一级的数据
       case 1:
-        index[1]=e.detail.value;
-        index[2]=0;
+        index[1] = e.detail.value;
+        index[2] = 0;
         that.setData({
           multiIndex: index
         })
@@ -182,68 +201,24 @@ Page({
         break;
         //切换区县级，仅需保持符合索引同步
       case 2:
-        index[2]=e.detail.value;
+        index[2] = e.detail.value;
         that.setData({
-          multiIndex:index
+          multiIndex: index
         })
-       break;
+        break;
     }
   },
 
   /**
    * 监听地区信息更改事件，即监听确定按钮
    */
-  bindRegionChange:function(){
-    var currentHsienId = this.data.hsienList[this.data.multiIndex[2]].id 
+  bindRegionChange: function () {
+    var currentHsienId = this.data.hsienList[this.data.multiIndex[2]].id;
+    var regions = this.data.regions;
+    var multiIndex = this.data.multiIndex;
     this.setData({
       hsienId: currentHsienId,
+      address: [regions[0][multiIndex[0]], regions[1][multiIndex[1]], regions[2][multiIndex[2]]]
     })
-  },
-
-
-  
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  },
-
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
 })
-
-

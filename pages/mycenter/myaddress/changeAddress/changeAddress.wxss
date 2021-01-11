@@ -29,13 +29,12 @@
   padding-left: 181rpx;
   border-bottom: 1.81rpx solid #eee;
 }
-button{
-  width: 20%;
+.btn {
+  width: 90%;
+  margin: 20rpx auto;
+  padding: 0;
   height: 72.4rpx;
   background: #5495E6;
   color: #ffffff;
-  font-size: 25.34rpx;
-  float: left;
-  margin-left: 144.8rpx;
-  margin-top: 36.2rpx;
+  font-size: 30rpx
 }

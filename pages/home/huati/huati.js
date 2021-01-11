@@ -1,66 +1,99 @@
-// pages/home/huati/huati.js
-Page({
+// pagesComponents/homeComponents/huati/huati.js
+//Component Object
+import Request from "../../../utils/request"
 
-  /**
-   * 页面的初始数据
-   */
+let that;
+
+Component({
+  properties: {
+
+  },
+  options: {
+    addGlobalClass: true
+  },
   data: {
-    
+    topic: [],
+    currentPage: 1
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+  methods: {
+    async getData(show) {
+      let page = 0;
+      console.log("huati components");
+      try {
+        let msg = await Request.request({
+          url: `/bbs/topic/page?len=5&page=${page}`
+        }, show);
+        if (msg.data.list.length === 0) {
+          wx.showToast({
+            icon: 'none',
+            title: '目前还没有话题哦'
+          })
+        } else {
+          that.setData({
+            currentPage: page + 1,
+            topic: msg.data.list
+          });
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    //获取下一页数据
+    async getNextData() {
+      let page = this.data.currentPage;
+      //没有话题不做处理
+      if (this.data.topic.length < 5) {
+        return;
+      }
+      console.log("next huati");
+      try {
+        let msg = await Request.request({
+          url: `/bbs/topic/page?len=5&page=${page}`
+        });
+        if (msg.data.list.length === 0) {
+          wx.showToast({
+            icon: 'none',
+            title: '已经到底了'
+          })
+        } else {
+          that.setData({
+            currentPage: page + 1,
+            topic: [...this.data.topic, ...msg.data.list]
+          });
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    //跳转话题详情页
+    getTopic: function (e) {
+      let tpid = e.currentTarget.dataset.tpid;
+      wx.navigateTo({
+        url: '/pages/homePage/huatiDetail/huatiDetail?tpid=' + tpid
+      })
+    },
+    //获取发起者详细信息
+    person_index: function (options) {
+      var userid = options.currentTarget.dataset.userid;
+      wx.navigateTo({
+        url: '/pages/mycenter/person_index/person_index?userid=' + userid
+      })
+    }
+  },
+  created: async function () {
+    that = this;
+    console.log("huati creat")
+  },
+  attached: function () {
 
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+  ready: function () {
 
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
+  moved: function () {
 
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
+  detached: function () {
 
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
-})
+});
